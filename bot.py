@@ -53,7 +53,8 @@ async def on_message(message):
             username = message.content.replace("!lastmatchid", "").strip()
             api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
             players = api.players().filter(player_names=[username])
-            await api.matches().get(players[0].matches[0].id)
+            last_match_id = players[0].matches[0].id
+            await client.send_message(message.channel, last_match_id)
 
         except Exception as e:
             await client.send_message(message.channel, e)
