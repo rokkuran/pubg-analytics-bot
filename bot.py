@@ -2,13 +2,21 @@ import discord
 import asyncio
 import os
 import yaml
+import logging
 
-from common import Query
+# from common import Query
+
+
+logger = logging.getLogger('discord')
+logger.setLevel(logging.DEBUG)
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
 
 
 
 client = discord.Client()
-responses = yaml.safe_load(open('config.yaml', 'rb'))
+responses = yaml.safe_load(open('responses.yaml', 'rb'))
 
 
 @client.event
@@ -34,8 +42,16 @@ async def on_message(message):
 
     if message.content.startswith("!lastmatchid"):
         username = ' '.join(message.content.split("!lastmatchid")[1:])
-        query = Query()
-        last_match_id = query.get_user_last_match_id(username)
+
+        api = PUBG(os.environ['PUBG_API_KEY'], shard)
+        players = api.players().filter(player_names=[username])
+		last_match_id = api.matches().get(players[0].matches[0].id)
+
+        # query = Query()
+        # last_match_id = query.get_user_last_match_id(username)
+
+        # await client.send_message(message.channel, "processing lastmatchid query...")
+
         await client.send_message(message.channel, last_match_id)
 
 client.run(os.environ['DISCORD_BOT_TOKEN'])
