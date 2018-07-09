@@ -39,14 +39,14 @@ async def on_message(message):
         await client.send_message(message.channel, username)
     
     if message.content.startswith("!test"):
-        username = ' '.join(message.content.split("!test")[1:])
+        username = ' '.join(message.content.split("!test ")[1:])
 
         try:
             api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
 
             players = api.players().filter(player_names=[username])
 
-            await client.send_message(message.channel, players[0])
+            await client.send_message(message.channel, players[0].id)
 
         except Exception as e:
             await client.send_message(message.channel, e)
