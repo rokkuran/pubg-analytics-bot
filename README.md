@@ -1,7 +1,7 @@
 # PUBG Analytics Discord Bot
-Very much WIP bot for discord. Mainly for PUBG player/match analytics.
+Very much WIP bot for [Discord](https://discordapp.com/). Mainly for PUBG player/match analytics - examples and code in my other [repository](https://github.com/rokkuran/pubg-analytics).
 
-Bot does work with simple test commands. Extension to PUBG analytics using their API in progress. 
+Bot does work with simple test commands. Extension to PUBG analytics using their [API](https://documentation.playbattlegrounds.com/en/telemetry-events.html) in progress. 
 
 Example testing below:
 
