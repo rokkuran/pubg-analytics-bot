@@ -37,10 +37,17 @@ async def on_message(message):
         username = ' '.join(message.content.split("!username_split_test")[1:])
 
         await client.send_message(message.channel, username)
+    
+    if message.content.startswith("!playerid"):
+        username = ' '.join(message.content.split("!playerid")[1:])
 
-        # api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
-        # players = api.players().filter(player_names=[username])
+        try:
+            api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
+            players = api.players().filter(player_names=[username])            
+            await client.send_message(message.channel, players[0].id)
 
-        # await client.send_message(message.channel, players[0].id)
+        except Exception as e:
+            await client.send_message(message.channel, e)
+
 
 client.run(os.environ['DISCORD_BOT_TOKEN'])
