@@ -1,0 +1,6 @@
+responses:
+  help: """
+    commands:
+    Hello - ...
+    !sakamoto - sakamoto-san
+    """
