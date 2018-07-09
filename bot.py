@@ -17,6 +17,14 @@ async def on_ready():
 async def on_message(message):
     if message.content == "Hello":
         await client.send_message(message.channel, "World")
+    
+    if message.content == "!help":
+        msg = """
+        commands:
+        Hello - ...
+        !sakamoto - sakamoto-san
+        """
+        await client.send_message(message.channel, msg)
 
     if message.content == "!sakamoto":
         await client.send_file(message.channel, "img/nichijou-sakamoto-san.jpg")
