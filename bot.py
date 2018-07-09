@@ -2,17 +2,9 @@ import discord
 import asyncio
 import os
 import yaml
-import logging
 
 # from common import Query
 from pubg_python import PUBG, Shard
-
-
-logger = logging.getLogger('discord')
-logger.setLevel(logging.DEBUG)
-handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
-handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
-logger.addHandler(handler)
 
 
 
