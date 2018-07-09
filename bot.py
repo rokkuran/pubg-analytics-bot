@@ -1,8 +1,10 @@
 import discord
-import yaml
+# import yaml
+import os
 
 
-config = yaml.safe_load(open('config.yaml', 'rb'))
+
+# config = yaml.safe_load(open('config.yaml', 'rb'))
 
 client = discord.Client()
 
@@ -18,4 +20,5 @@ async def on_message(message):
     if message.content == "Hello":
         await client.send_message(message.channel, "World")
 
-client.run(config['token'])
+# client.run(config['token'])
+client.run(os.environ['TOKEN'])
