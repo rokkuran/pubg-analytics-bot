@@ -46,12 +46,7 @@ async def on_message(message):
 
             players = api.players().filter(player_names=[username])
 
-            await client.send_message(message.channel, players)
-
-
-            # sample = api.samples().get()
-            # for match in sample.matches:   
-            #     await client.send_message(message.channel, match.id)
+            await client.send_message(message.channel, players[0])
 
         except Exception as e:
             await client.send_message(message.channel, e)
