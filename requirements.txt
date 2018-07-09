@@ -1,2 +1,4 @@
 discord.py==0.16.12
 asyncio==3.4.3
+PyYAML==3.12
+pubg-python==0.3.2
