@@ -29,6 +29,8 @@ commands_text_response = {
 
 commands_img_response = {
     "zonedist": "PLACEHOLDER",
+    "sakamoto": "img/nichijou-sakamoto-san.jpg",
+    "shimoneta": "https://i2.wp.com/snapthirty.com/wp-content/uploads/2017/08/shimoneta-screenshot-01.jpg?resize=700%2C394&ssl=1",
 }
 
 
@@ -39,7 +41,12 @@ def get_cmd_args(msg):
     return msg[1:].split()[1:]
 
 def process_cmd(msg):
+    """
+    Returns: cmd_type, result
+    """
     cmd = get_cmd(msg)
+    result = None
+
     if cmd in commands_text_response:
         
         args = get_cmd_args(msg)
@@ -47,14 +54,19 @@ def process_cmd(msg):
         
         if callable(f):
             if len(args) > 0:
-                return f(*args)
-            else:
-                return None  # no arguments specified
+                result = f(*args)
+                # return "text", f(*args)
+            # else:
+                # return "text", None  # no arguments specified
         else:
-            return f
+            # return "text", f
+            result = f
+        
+        return "text", result
 
     elif cmd in commands_img_response:
-        pass
+        # TODO: need to introduce callable function as well
+        return "img", commands_img_response[cmd]
 
 
 
@@ -72,8 +84,14 @@ async def on_message(message):
         await client.send_message(message.channel, RESPONSES[message.content])
 
     if message.content.startswith("!"):
-        response = process_cmd(message.content)
-        await client.send_message(message.channel, response)
+        cmd_type, response = process_cmd(message.content)
+
+        if cmd_type == "text":
+            await client.send_message(message.channel, response)
+        elif cmd_type == "img":
+            await client.send_file(message.channel, response)
+        else:
+            await client.send_message(message.channel, "ERROR: cmd_type not 'text' or 'img'")
   
     # if message.content == "!help":
     #     await client.send_message(message.channel, RESPONSES['help'])
