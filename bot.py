@@ -3,8 +3,9 @@ import asyncio
 import os
 import yaml
 
-# from common import Query
 from pubg_python import PUBG, Shard
+
+from common import Query
 
 
 
@@ -70,7 +71,7 @@ async def on_message(message):
             
             a = {
                 "game_mode": match.game_mode,
-                "duration": match.game_mode,
+                "duration": match.duration,
                 "map": match.map,
             } 
 
