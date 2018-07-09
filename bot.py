@@ -33,18 +33,18 @@ async def on_message(message):
     if message.content == "!sakamoto":
         await client.send_file(message.channel, "img/nichijou-sakamoto-san.jpg")
 
-    if message.content.startswith("!lastmatchid"):
-        username = ' '.join(message.content.split("!lastmatchid")[1:])
+    # if message.content.startswith("!lastmatchid"):
+    #     username = ' '.join(message.content.split("!lastmatchid")[1:])
 
-        api = PUBG(os.environ['PUBG_API_KEY'], shard)
-        players = api.players().filter(player_names=[username])
-		last_match_id = api.matches().get(players[0].matches[0].id)
+    #     api = PUBG(os.environ['PUBG_API_KEY'], shard)
+    #     players = api.players().filter(player_names=[username])
+	# 	last_match_id = api.matches().get(players[0].matches[0].id)
 
-        # query = Query()
-        # last_match_id = query.get_user_last_match_id(username)
+    #     # query = Query()
+    #     # last_match_id = query.get_user_last_match_id(username)
 
-        # await client.send_message(message.channel, "processing lastmatchid query...")
+    #     # await client.send_message(message.channel, "processing lastmatchid query...")
 
-        await client.send_message(message.channel, last_match_id)
+    #     await client.send_message(message.channel, last_match_id)
 
 client.run(os.environ['DISCORD_BOT_TOKEN'])
