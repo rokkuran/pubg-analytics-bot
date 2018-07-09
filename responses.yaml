@@ -1,1 +1,6 @@
-help: "commands:\n!sakamoto - sakamoto-san"
+commands:
+  "!help": "commands:\n!sakamoto - sakamoto-san"
+
+responses:
+  ni hao: ni hao, shon di!
+  fren: no fren, i bot, bleep bloop

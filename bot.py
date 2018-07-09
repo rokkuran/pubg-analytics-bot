@@ -10,7 +10,9 @@ from common import Query
 
 
 client = discord.Client()
-responses = yaml.safe_load(open('responses.yaml', 'rb'))
+
+config = yaml.safe_load(open('responses.yaml', 'rb'))
+RESPONSES = config['responses']
 
 
 @client.event
@@ -20,13 +22,14 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
+
 @client.event
 async def on_message(message):
-    if message.content == "ni hao":
-        await client.send_message(message.channel, "ni hao, shon di!")
+    if message.content in RESPONSES:
+        await client.send_message(message.channel, RESPONSES[message.content])
     
     if message.content == "!help":
-        await client.send_message(message.channel, responses['help'])
+        await client.send_message(message.channel, RESPONSES['help'])
 
     if message.content == "!sakamoto":
         await client.send_file(message.channel, "img/nichijou-sakamoto-san.jpg")
