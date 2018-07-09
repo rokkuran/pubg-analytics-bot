@@ -4,7 +4,7 @@ import os
 import yaml
 
 # from common import Query
-from pubg_python import PUBG, Shard
+# from pubg_python import PUBG, Shard
 
 
 
