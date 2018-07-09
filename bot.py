@@ -5,6 +5,7 @@ import yaml
 import logging
 
 # from common import Query
+from pubg_python import PUBG, Shard
 
 
 logger = logging.getLogger('discord')
