@@ -19,17 +19,19 @@ def test(a):
 def testargs(*args):
     return "testargs function returned with args={}".format(args)
 
-def get_last_match_id(username):
-    api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
-    players = api.players().filter(player_names=[username])
-    return players[0].matches[0].id
+# def get_last_match_id(username):
+#     api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
+#     players = api.players().filter(player_names=[username])
+#     return players[0].matches[0].id
+
+query = Query()
 
 
 commands_text_response = {
     "help": RESPONSES["help"],
     "test": test,
     "testargs": testargs,
-    "lastmatchid": get_last_match_id,
+    "lastmatchid": query.get_last_match_id,
 }
 
 commands_img_response = {
@@ -52,19 +54,14 @@ def process_cmd(msg):
     cmd = get_cmd(msg)
     result = None
 
-    if cmd in commands_text_response:
-        
+    if cmd in commands_text_response:        
         args = get_cmd_args(msg)
         f = commands_text_response[cmd]
         
         if callable(f):
             if len(args) > 0:
                 result = f(*args)
-                # return "text", f(*args)
-            # else:
-                # return "text", None  # no arguments specified
         else:
-            # return "text", f
             result = f
         
         return "text", result
@@ -72,6 +69,10 @@ def process_cmd(msg):
     elif cmd in commands_img_response:
         # TODO: need to introduce callable function as well
         return "img", commands_img_response[cmd]
+    else:
+        return None, "Command not recognised."
+
+
 
 
 
@@ -96,7 +97,7 @@ async def on_message(message):
         elif cmd_type == "img":
             await client.send_file(message.channel, response)
         else:
-            await client.send_message(message.channel, "ERROR: cmd_type not 'text' or 'img'")
+            await client.send_message(message.channel, response)
   
     # if message.content == "!help":
     #     await client.send_message(message.channel, RESPONSES['help'])
@@ -104,10 +105,9 @@ async def on_message(message):
     # if message.content == "!sakamoto":
     #     await client.send_file(message.channel, "img/nichijou-sakamoto-san.jpg")
 
-    if message.content.startswith("!username_split_test"):
-        username = ' '.join(message.content.split("!username_split_test")[1:])
-
-        await client.send_message(message.channel, username)
+    # if message.content.startswith("!username_split_test"):
+    #     username = ' '.join(message.content.split("!username_split_test")[1:])
+    #     await client.send_message(message.channel, username)
     
     if message.content.startswith("!playerid"):
         try:
