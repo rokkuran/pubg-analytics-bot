@@ -44,9 +44,14 @@ async def on_message(message):
         try:
             api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
 
-            sample = api.samples().get()
-            for match in sample.matches:   
-                await client.send_message(message.channel, match.id)
+            players = api.players().filter(player_names=[username])
+
+            await client.send_message(message.channel, players)
+
+
+            # sample = api.samples().get()
+            # for match in sample.matches:   
+            #     await client.send_message(message.channel, match.id)
 
         except Exception as e:
             await client.send_message(message.channel, e)
