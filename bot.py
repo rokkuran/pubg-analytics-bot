@@ -9,7 +9,7 @@ import yaml
 
 
 client = discord.Client()
-responses = yaml.safe_load(open('responses.yaml', 'rb'))
+responses = yaml.safe_load(open('responses.yaml', 'r'))
 
 
 @client.event
