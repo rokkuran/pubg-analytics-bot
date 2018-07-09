@@ -24,6 +24,7 @@ def testargs(*args):
 commands_text_response = {
     "help": RESPONSES["help"],
     "test": test,
+    "testargs": testargs,
 }
 
 commands_img_response = {
