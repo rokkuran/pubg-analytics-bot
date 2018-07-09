@@ -10,9 +10,51 @@ from common import Query
 
 
 client = discord.Client()
+RESPONSES = yaml.safe_load(open('responses.yaml', 'rb'))
 
-config = yaml.safe_load(open('responses.yaml', 'rb'))
-RESPONSES = config['responses']
+
+def test(a):
+    return "test function returned with arg={}".format(a)
+
+def testargs(*args):
+    return "testargs function returned with args={}".format(args)
+
+
+
+commands_text_response = {
+    "help": RESPONSES["help"],
+    "test": test,
+}
+
+commands_img_response = {
+    "zonedist": "PLACEHOLDER",
+}
+
+
+def get_cmd(msg):
+    return msg[1:].split()[0]
+
+def get_cmd_args(msg):
+    return msg[1:].split()[1:]
+
+def process_cmd(msg):
+    cmd = get_cmd(msg)
+    if cmd in commands_text_response:
+        
+        args = get_cmd_args(msg)
+        f = commands_text_response[cmd]
+        
+        if callable(f):
+            if len(args) > 0:
+                return f(*args)
+            else:
+                return None  # no arguments specified
+        else:
+            return f
+
+    elif cmd in commands_img_response:
+        pass
+
 
 
 @client.event
@@ -27,9 +69,13 @@ async def on_ready():
 async def on_message(message):
     if message.content in RESPONSES:
         await client.send_message(message.channel, RESPONSES[message.content])
-    
-    if message.content == "!help":
-        await client.send_message(message.channel, RESPONSES['help'])
+
+    if message.content.startswith("!"):
+        response = process_cmd(message.content)
+        await client.send_message(message.channel, response)
+  
+    # if message.content == "!help":
+    #     await client.send_message(message.channel, RESPONSES['help'])
 
     if message.content == "!sakamoto":
         await client.send_file(message.channel, "img/nichijou-sakamoto-san.jpg")

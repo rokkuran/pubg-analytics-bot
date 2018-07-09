@@ -1,6 +1,6 @@
-commands:
-  "!help": "commands:\n!sakamoto - sakamoto-san"
+# random text based responses
+ni hao: ni hao, shon di!
+fren: no fren, i bot, bleep bloop
 
-responses:
-  ni hao: ni hao, shon di!
-  fren: no fren, i bot, bleep bloop
+# simple command text responses
+help: "commands:\n!sakamoto - sakamoto-san"
