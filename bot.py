@@ -1,10 +1,8 @@
 import discord
-# import yaml
+import asyncio
 import os
 
 
-
-# config = yaml.safe_load(open('config.yaml', 'rb'))
 
 client = discord.Client()
 
@@ -20,5 +18,8 @@ async def on_message(message):
     if message.content == "Hello":
         await client.send_message(message.channel, "World")
 
-# client.run(config['token'])
+    if message.content == "!sakamoto":
+        await client.send_file(message.channel, "img/nichijou-sakamoto-san.jpg")
+
+
 client.run(os.environ['TOKEN'])
