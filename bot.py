@@ -19,12 +19,17 @@ def test(a):
 def testargs(*args):
     return "testargs function returned with args={}".format(args)
 
+def get_last_match_id(username):
+    api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
+    players = api.players().filter(player_names=[username])
+    return players[0].matches[0].id
 
 
 commands_text_response = {
     "help": RESPONSES["help"],
     "test": test,
     "testargs": testargs,
+    "lastmatchid": get_last_match_id,
 }
 
 commands_img_response = {
@@ -96,8 +101,8 @@ async def on_message(message):
     # if message.content == "!help":
     #     await client.send_message(message.channel, RESPONSES['help'])
 
-    if message.content == "!sakamoto":
-        await client.send_file(message.channel, "img/nichijou-sakamoto-san.jpg")
+    # if message.content == "!sakamoto":
+    #     await client.send_file(message.channel, "img/nichijou-sakamoto-san.jpg")
 
     if message.content.startswith("!username_split_test"):
         username = ' '.join(message.content.split("!username_split_test")[1:])
@@ -114,13 +119,13 @@ async def on_message(message):
         except Exception as e:
             await client.send_message(message.channel, e)
 
-    if message.content.startswith("!lastmatchid"):
-        try:
-            username = message.content.replace("!lastmatchid", "").strip()
-            api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
-            players = api.players().filter(player_names=[username])
-            last_match_id = players[0].matches[0].id
-            await client.send_message(message.channel, last_match_id)
+    # if message.content.startswith("!lastmatchid"):
+    #     try:
+    #         username = message.content.replace("!lastmatchid", "").strip()
+    #         api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
+    #         players = api.players().filter(player_names=[username])
+    #         last_match_id = players[0].matches[0].id
+    #         await client.send_message(message.channel, last_match_id)
 
         except Exception as e:
             await client.send_message(message.channel, e)
