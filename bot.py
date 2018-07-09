@@ -59,5 +59,25 @@ async def on_message(message):
         except Exception as e:
             await client.send_message(message.channel, e)
 
+    if message.content.startswith("!lastmatchinfo"):
+        try:
+            username = message.content.replace("!lastmatchinfo", "").strip()
+            api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
+            players = api.players().filter(player_names=[username])
+            last_match_id = players[0].matches[0].id
+
+            match = api.matches().get(last_match_id)
+            
+            a = {
+                "game_mode": match.game_mode,
+                "duration": match.game_mode,
+                "map": match.map,
+            } 
+
+            await client.send_message(message.channel, a)
+
+        except Exception as e:
+            await client.send_message(message.channel, e)
+
 
 client.run(os.environ['DISCORD_BOT_TOKEN'])
