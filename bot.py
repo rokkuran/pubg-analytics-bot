@@ -22,11 +22,8 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content == "Hello":
-        await client.send_message(message.channel, "World")
-    
     if message.content == "ni hao":
-        await client.send_message(message.channel, "ni hao shon di!")
+        await client.send_message(message.channel, "ni hao, shon di!")
     
     if message.content == "!help":
         await client.send_message(message.channel, responses['help'])
