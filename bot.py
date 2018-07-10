@@ -25,6 +25,8 @@ query = Query()
 
 commands_text_response = {
     "help": RESPONSES["help"],
+    "helpfs": RESPONSES["helpfs"],
+    "helpls": RESPONSES["helpls"],
     "test": test,
     "testargs": testargs,
     "playerid": query.get_player_id,
