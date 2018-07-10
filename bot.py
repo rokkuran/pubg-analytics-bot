@@ -88,18 +88,25 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content in RESPONSES:
-        await client.send_message(message.channel, RESPONSES[message.content])
 
-    if message.content.startswith("!"):
-        cmd_type, response = process_cmd(message.content)
+    try:
+        if message.content in RESPONSES:
+            await client.send_message(message.channel, RESPONSES[message.content])
 
-        if cmd_type == "text":
-            await client.send_message(message.channel, response)
-        elif cmd_type == "img":
-            await client.send_file(message.channel, response)
-        else:
-            await client.send_message(message.channel, response)
+        if message.content.startswith("!"):
+            cmd_type, response = process_cmd(message.content)
+
+            if cmd_type == "text":
+                await client.send_message(message.channel, response)
+            elif cmd_type == "img":
+                await client.send_file(message.channel, response)
+            else:
+                await client.send_message(message.channel, response)
+
+    except Exception as e:
+        await client.send_message(message.channel, e)
+
+
   
     # if message.content == "!help":
     #     await client.send_message(message.channel, RESPONSES['help'])
