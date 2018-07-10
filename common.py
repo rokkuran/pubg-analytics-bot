@@ -1,5 +1,5 @@
 import matplotlib
-matplotlib.use('Cairo')  # tkinter backend not supported by heroku
+matplotlib.use('Agg')  # tkinter backend not supported by heroku
 import matplotlib.pyplot as plt
 
 import yaml
