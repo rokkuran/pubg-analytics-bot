@@ -3,5 +3,5 @@ asyncio==3.4.3
 PyYAML==3.12
 pubg-python==0.3.2
 matplotlib==2.2.2
-# numpy==1.14.2
+numpy==1.14.2
 # urllib3==1.22
