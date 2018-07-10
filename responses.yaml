@@ -6,3 +6,11 @@ you work?: yeah bby, i here
 
 # simple command text responses
 help: "triggers:\n----------------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n----------------\n!sakamoto - sakamoto-san"
+helpfs: >
+  this is the FOLDED style (>)
+  multi-line string in yaml
+  this is how it works... 
+helpls: |
+  this is the LITERAL style (|)
+  multi-line string in yaml
+  this is how it works...
