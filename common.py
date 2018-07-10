@@ -1,3 +1,6 @@
+import matplotlib
+matplotlib.use('Agg')
+
 import yaml
 import os
 import io
@@ -6,7 +9,7 @@ import base64
 
 import numpy as np
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 from pubg_python import PUBG, Shard
 
