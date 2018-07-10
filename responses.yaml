@@ -13,4 +13,17 @@ helpfs: >
 helpls: |
   this is the LITERAL style (|)
   multi-line string in yaml
+  !exclamation mark test line
+  this: is the colon test line
   this is how it works...
+# help: |
+#   triggers
+#   --------
+#   ni hao
+#   fren
+#   erryti
+#   you work?
+  
+#   commands
+#   --------
+#   !sakamoto - sakamoto-san
