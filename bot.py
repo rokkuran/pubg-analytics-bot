@@ -31,13 +31,15 @@ commands_text_response = {
     "help": RESPONSES["help"],
     "test": test,
     "testargs": testargs,
+    "playerid": query.get_player_id,
     "lastmatchid": query.get_last_match_id,
+    "lastmatchinfo": query.get_last_match_info,
 }
 
 commands_img_response = {
     "zonedist": "PLACEHOLDER",
     "sakamoto": "img/nichijou-sakamoto-san.jpg",
-    "shimoneta": "https://i2.wp.com/snapthirty.com/wp-content/uploads/2017/08/shimoneta-screenshot-01.jpg?resize=700%2C394&ssl=1",
+    "testplot", query.test_plot,
 }
 
 
@@ -109,15 +111,15 @@ async def on_message(message):
     #     username = ' '.join(message.content.split("!username_split_test")[1:])
     #     await client.send_message(message.channel, username)
     
-    if message.content.startswith("!playerid"):
-        try:
-            username = message.content.replace("!playerid", "").strip()
-            api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
-            players = api.players().filter(player_names=[username])
-            await client.send_message(message.channel, players[0].id)
+    # if message.content.startswith("!playerid"):
+    #     try:
+    #         username = message.content.replace("!playerid", "").strip()
+    #         api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
+    #         players = api.players().filter(player_names=[username])
+    #         await client.send_message(message.channel, players[0].id)
 
-        except Exception as e:
-            await client.send_message(message.channel, e)
+    #     except Exception as e:
+    #         await client.send_message(message.channel, e)
 
     # if message.content.startswith("!lastmatchid"):
     #     try:
@@ -127,28 +129,28 @@ async def on_message(message):
     #         last_match_id = players[0].matches[0].id
     #         await client.send_message(message.channel, last_match_id)
 
-        except Exception as e:
-            await client.send_message(message.channel, e)
+        # except Exception as e:
+        #     await client.send_message(message.channel, e)
 
-    if message.content.startswith("!lastmatchinfo"):
-        try:
-            username = message.content.replace("!lastmatchinfo", "").strip()
-            api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
-            players = api.players().filter(player_names=[username])
-            last_match_id = players[0].matches[0].id
+    # if message.content.startswith("!lastmatchinfo"):
+    #     try:
+    #         username = message.content.replace("!lastmatchinfo", "").strip()
+    #         api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
+    #         players = api.players().filter(player_names=[username])
+    #         last_match_id = players[0].matches[0].id
 
-            match = api.matches().get(last_match_id)
+    #         match = api.matches().get(last_match_id)
             
-            a = {
-                "game_mode": match.game_mode,
-                "duration": match.duration,
-                "map": match.map,
-            } 
+    #         a = {
+    #             "game_mode": match.game_mode,
+    #             "duration": match.duration,
+    #             "map": match.map,
+    #         } 
 
-            await client.send_message(message.channel, a)
+    #         await client.send_message(message.channel, a)
 
-        except Exception as e:
-            await client.send_message(message.channel, e)
+        # except Exception as e:
+        #     await client.send_message(message.channel, e)
 
 
 client.run(os.environ['DISCORD_BOT_TOKEN'])
