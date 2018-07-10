@@ -1,4 +1,4 @@
-import matplotlib
+import matplotlib.pyplot as plt
 matplotlib.use('Agg')  # tkinter backend not supported by heroku
 
 import yaml
@@ -9,7 +9,7 @@ import base64
 
 import numpy as np
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 from pubg_python import PUBG, Shard
 
