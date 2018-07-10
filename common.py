@@ -47,22 +47,22 @@ class Query(API):
 
 		return match_info
 	
-	# def test_plot(self, n):
+	def test_plot(self, n):
 	
-	# 	plt.plot(range(n), np.random.normal(0, 1, n))
-	# 	fig = plt.gcf()
+		matplotlib.pyplot.plot(range(n), np.random.normal(0, 1, n))
+		fig = matplotlib.pyplot.gcf()
 
-	# 	buf = io.BytesIO()
-	# 	fig.savefig(buf, format='png')
-	# 	buf.seek(0)
-	# 	string = base64.b64encode(buf.read())
+		buf = io.BytesIO()
+		fig.savefig(buf, format='png')
+		buf.seek(0)
+		string = base64.b64encode(buf.read())
 
-	# 	uri = 'data:image/png;base64,' + urllib.parse.quote(string)
-	# 	return uri
+		uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+		return uri
 
-	# def get_user_last_match(self, username):
-	# 	players = self.api.players().filter(player_names=[username])
-	# 	return self.api.matches().get(players[0].matches[0].id)
+	def get_user_last_match(self, username):
+		players = self.api.players().filter(player_names=[username])
+		return self.api.matches().get(players[0].matches[0].id)
 
 	
 
