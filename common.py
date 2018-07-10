@@ -28,13 +28,13 @@ class Query(API):
 	def get_last_match_id(self, username):
 		players = self.get_players(username)
 		return players[0].matches[0].id
-	
-	def get_player_id(self, username)
+		
+	def get_player_id(self, username):
 		players = self.get_players(username)
-        return players[0].id
+		return players[0].id
 	
 	def get_last_match_info(self, username):
-		match = api.matches().get(self.get_last_match_id(username))
+		match = self.api.matches().get(self.get_last_match_id(username))
 		
 		match_info = {
 			"game_mode": match.game_mode,
