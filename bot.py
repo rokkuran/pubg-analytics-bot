@@ -19,10 +19,6 @@ def test(a):
 def testargs(*args):
     return "testargs function returned with args={}".format(args)
 
-# def get_last_match_id(username):
-#     api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
-#     players = api.players().filter(player_names=[username])
-#     return players[0].matches[0].id
 
 query = Query()
 
