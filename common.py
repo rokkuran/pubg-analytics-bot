@@ -1,5 +1,5 @@
 import matplotlib
-matplotlib.use('Agg')
+matplotlib.use('Agg')  # tkinter backend not supported by heroku
 
 import yaml
 import os
