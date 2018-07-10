@@ -35,7 +35,7 @@ commands_text_response = {
 commands_img_response = {
     "zonedist": "PLACEHOLDER",
     "sakamoto": "img/nichijou-sakamoto-san.jpg",
-    "testplot", query.test_plot,
+    # "testplot", query.test_plot,
 }
 
 
@@ -101,59 +101,6 @@ async def on_message(message):
 
     except Exception as e:
         await client.send_message(message.channel, e)
-
-
-  
-    # if message.content == "!help":
-    #     await client.send_message(message.channel, RESPONSES['help'])
-
-    # if message.content == "!sakamoto":
-    #     await client.send_file(message.channel, "img/nichijou-sakamoto-san.jpg")
-
-    # if message.content.startswith("!username_split_test"):
-    #     username = ' '.join(message.content.split("!username_split_test")[1:])
-    #     await client.send_message(message.channel, username)
-    
-    # if message.content.startswith("!playerid"):
-    #     try:
-    #         username = message.content.replace("!playerid", "").strip()
-    #         api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
-    #         players = api.players().filter(player_names=[username])
-    #         await client.send_message(message.channel, players[0].id)
-
-    #     except Exception as e:
-    #         await client.send_message(message.channel, e)
-
-    # if message.content.startswith("!lastmatchid"):
-    #     try:
-    #         username = message.content.replace("!lastmatchid", "").strip()
-    #         api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
-    #         players = api.players().filter(player_names=[username])
-    #         last_match_id = players[0].matches[0].id
-    #         await client.send_message(message.channel, last_match_id)
-
-        # except Exception as e:
-        #     await client.send_message(message.channel, e)
-
-    # if message.content.startswith("!lastmatchinfo"):
-    #     try:
-    #         username = message.content.replace("!lastmatchinfo", "").strip()
-    #         api = PUBG(os.environ['PUBG_API_KEY'], Shard.PC_OC)
-    #         players = api.players().filter(player_names=[username])
-    #         last_match_id = players[0].matches[0].id
-
-    #         match = api.matches().get(last_match_id)
-            
-    #         a = {
-    #             "game_mode": match.game_mode,
-    #             "duration": match.duration,
-    #             "map": match.map,
-    #         } 
-
-    #         await client.send_message(message.channel, a)
-
-        # except Exception as e:
-        #     await client.send_message(message.channel, e)
 
 
 client.run(os.environ['DISCORD_BOT_TOKEN'])
