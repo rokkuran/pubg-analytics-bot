@@ -37,6 +37,7 @@ commands_text_response = {
 commands_img_response = {
     "zonedist": "PLACEHOLDER",
     "sakamoto": "img/nichijou-sakamoto-san.jpg",
+    "ritalinlost": "img/ritalin_lost.jpg",
     # "testplot", query.test_plot,
 }
 

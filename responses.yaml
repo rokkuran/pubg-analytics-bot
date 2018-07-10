@@ -5,7 +5,7 @@ erryti: headshot erryti!
 you work?: yeah bby, i here
 
 # simple command text responses
-help: "triggers:\n----------------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n----------------\n!sakamoto - sakamoto-san"
+help: "triggers:\n---------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n---------\n!sakamoto - sakamoto-san\n!ritalinlost - accurate portrayal"
 helpfs: >
   this is the FOLDED style (>)
   multi-line string in yaml
