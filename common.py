@@ -9,7 +9,7 @@ import base64
 
 import numpy as np
 
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 from pubg_python import PUBG, Shard
 
@@ -49,8 +49,8 @@ class Query(API):
 	
 	def test_plot(self, n):
 	
-		matplotlib.pyplot.plot(range(n), np.random.normal(0, 1, n))
-		fig = matplotlib.pyplot.gcf()
+		plt.plot(range(n), np.random.normal(0, 1, n))
+		fig = plt.gcf()
 
 		buf = io.BytesIO()
 		fig.savefig(buf, format='png')
