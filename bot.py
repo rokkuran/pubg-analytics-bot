@@ -151,7 +151,7 @@ async def on_message(message):
 
             embed = discord.Embed()
             # embed.set_image(url=plot_test())
-            embed.set_image(url='https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwimtMTXrJbcAhWGVbwKHbd7DSEQjRx6BAgBEAU&url=http%3A%2F%2Fwww.dailymail.co.uk%2Fnews%2Farticle-5363715%2FFourteen-Morrocan-goats-Argan-tree.html&psig=AOvVaw17qqzBEHTdx5tKIBjpfGng&ust=1531374472707565')
+            embed.set_image(url='https://en.wikipedia.org/wiki/Tree#/media/File:Ash_Tree_-_geograph.org.uk_-_590710.jpg')
             await client.send_message(message.channel, embed=embed)
 
     except Exception as e:
