@@ -101,9 +101,10 @@ def plot_test(N=50):
     data = [trace]
 
     url = py.plot(data, filename='basic-line')
-    image_bytes = requests.get('{}.jpg'.format(url)).content
+    # image_bytes = requests.get('{}.jpg'.format(url)).content
 
-    return image_bytes
+    # return image_bytes
+    return url
 
 
 
@@ -146,7 +147,11 @@ async def on_message(message):
             # embed.add_field(name="url", value=plot_url)
             # embed.set_image()
             # await client.send_message(message.channel, embed=embed)
-            await client.send_file(message.channel, content=plot_test())
+            # await client.send_file(message.channel, content=plot_test())
+
+            embed = discord.Embed()
+            embed.set_image(url=plot_test())
+            await client.send_message(message.channel, embed=embed)
 
     except Exception as e:
         await client.send_message(message.channel, e)
