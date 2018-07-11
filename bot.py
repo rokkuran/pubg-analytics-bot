@@ -9,6 +9,12 @@ from common import Query
 
 
 import numpy as np
+
+
+import plotly
+plotly.tools.set_credentials_file(username='rokkuran', api_key=os.environ['PLOTLY_API_KEY'])
+
+
 import plotly.plotly as py
 import plotly.graph_objs as go
 
@@ -26,6 +32,8 @@ def testargs(*args):
 
 
 query = Query()
+
+
 
 
 commands_text_response = {
@@ -130,7 +138,7 @@ async def on_message(message):
             # embed.add_field(name="Field2", value="hi2", inline=False)
             plot_url = plot_test()
             await client.send_message(message.channel, plot_url)
-            
+
             embed = discord.Embed()
             plot_url = plot_test()
             embed.add_field(name="url", value=plot_url)
