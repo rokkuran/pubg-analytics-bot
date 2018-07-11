@@ -130,7 +130,7 @@ async def on_message(message):
             # embed.add_field(name="Field2", value="hi2", inline=False)
             embed = discord.Embed()
             plot_url = plot_test()
-            embed.add_field(title="url", description=plot_url)
+            embed.add_field(name="url", value=plot_url)
             embed.set_image(url=plot_url)
             await client.send_message(message.channel, embed=embed)
 
