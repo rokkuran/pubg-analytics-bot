@@ -141,10 +141,10 @@ async def on_message(message):
 
             embed = discord.Embed()
             plot_url = plot_test()
-            await client.send_message(message.channel, plot_url + '.jpg')
+            await client.send_message(message.channel, plot_url + '.jpeg')
             # plot_url = "https://plot.ly/~rokkuran/0"
             # embed.add_field(name="url", value=plot_url)
-            embed.set_image(url=plot_url + '.jpg')
+            embed.set_image(url=plot_url + '.jpeg')
             await client.send_message(message.channel, embed=embed)
 
     except Exception as e:
