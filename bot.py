@@ -144,9 +144,9 @@ async def on_message(message):
             # await client.send_message(message.channel, plot_url + '.jpeg')
             # plot_url = "https://plot.ly/~rokkuran/0"
             # embed.add_field(name="url", value=plot_url)
-            # embed.set_image(url=plot_url + '.jpeg')
+            # embed.set_image()
             # await client.send_message(message.channel, embed=embed)
-            await client.send_file(message.channel, fp=plot_test())
+            await client.send_file(message.channel, content=plot_test())
 
     except Exception as e:
         await client.send_message(message.channel, e)
