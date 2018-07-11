@@ -46,12 +46,13 @@ commands_text_response = {
     "playerid": query.get_player_id,
     "lastmatchid": query.get_last_match_id,
     "lastmatchinfo": query.get_last_match_info,
+    "ritalinlost": RESPONSES['ritalinlost'],
 }
 
 commands_img_response = {
     "zonedist": "PLACEHOLDER",
     "sakamoto": "img/nichijou-sakamoto-san.jpg",
-    "ritalinlost": "img/ritalin_lost.jpg",
+    # "ritalinlost": "img/ritalin_lost.jpg",
     # "testplot", query.test_plot,
 }
 
