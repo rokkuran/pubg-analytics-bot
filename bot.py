@@ -99,12 +99,8 @@ def plot_test(N=50):
 
     data = [trace]
 
-    # py.iplot(data, filename='basic-line')
-    # a = py.iplot(data, filename='basic-line')
-
-    a = py.plot(data, filename='basic-line')
-    
-    return a
+    url = py.plot(data, filename='basic-line')
+    return url
 
 
 
@@ -142,6 +138,7 @@ async def on_message(message):
 
             embed = discord.Embed()
             plot_url = plot_test()
+            await client.send_message(message.channel, plot_url)
             # plot_url = "https://plot.ly/~rokkuran/0"
             # embed.add_field(name="url", value=plot_url)
             embed.set_image(url=plot_url)
