@@ -57,7 +57,7 @@ commands_img_response = {
 
 commands_embed_url_response = {
     "tatamigalaxy": 'https://media.kitsu.io/anime/poster_images/5122/small.jpg',
-    "embedtest": plot_test()
+    # "embedtest": plot_test()
 }
 
 
@@ -138,6 +138,7 @@ async def on_message(message):
             elif cmd_type == "img":
                 await client.send_file(message.channel, response)
             elif cmd_type == "embed":
+                await client.send_message(message.channel, response)
                 embed = discord.Embed(colour=discord.Colour.blue())
                 embed.set_image(url=response)
                 await client.send_message(message.channel, embed=embed)
