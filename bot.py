@@ -145,12 +145,12 @@ async def on_message(message):
             else:
                 await client.send_message(message.channel, response)
 
-        # if message.content == "~embedtest":
+        if message.content == "~embedtest":
         #     await client.send_message(message.channel, plot_test())
-        #     url = plot_test().replace("~", "%7E")
-        #     embed = discord.Embed(colour=discord.Colour.blue())
-        #     embed.set_image(url=url)
-        #     await client.send_message(message.channel, embed=embed)
+            # url = plot_test().replace("~", "%7E")
+            embed = discord.Embed(colour=discord.Colour.blue())
+            embed.set_image(url=plot_test())
+            await client.send_message(message.channel, embed=embed)
 
         #     embed = discord.Embed(colour=discord.Colour.blue())
         #     embed.set_image(url='https://media.kitsu.io/anime/poster_images/5122/small.jpg')
