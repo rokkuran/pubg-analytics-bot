@@ -2,6 +2,7 @@ import discord
 import asyncio
 import os
 import yaml
+import requests
 
 from pubg_python import PUBG, Shard
 
@@ -100,6 +101,8 @@ def plot_test(N=50):
     data = [trace]
 
     url = py.plot(data, filename='basic-line')
+    # image_bytes = requests.get('https://plot.ly/~chris/1638.jpg').content
+
     return url
 
 
@@ -138,10 +141,10 @@ async def on_message(message):
 
             embed = discord.Embed()
             plot_url = plot_test()
-            await client.send_message(message.channel, plot_url)
+            await client.send_message(message.channel, plot_url + '.jpg')
             # plot_url = "https://plot.ly/~rokkuran/0"
             # embed.add_field(name="url", value=plot_url)
-            embed.set_image(url=plot_url)
+            embed.set_image(url=plot_url + '.jpg')
             await client.send_message(message.channel, embed=embed)
 
     except Exception as e:
