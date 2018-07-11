@@ -58,6 +58,7 @@ commands_img_response = {
 commands_embed_url_response = {
     "tatamigalaxy": 'https://media.kitsu.io/anime/poster_images/5122/small.jpg',
     # "embedtest": plot_test()
+    "embedplottest": 'https://plot.ly/%7Erokkuran/0.jpeg',
 }
 
 
