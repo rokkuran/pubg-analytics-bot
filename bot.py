@@ -141,7 +141,7 @@ async def on_message(message):
             # await client.send_message(message.channel, plot_url)
 
             embed = discord.Embed()
-            # plot_url = plot_test()
+            plot_url = plot_test()
             # plot_url = "https://plot.ly/~rokkuran/0"
             # embed.add_field(name="url", value=plot_url)
             embed.set_image(url=plot_url)
