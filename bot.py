@@ -104,7 +104,7 @@ def plot_test(N=50):
 
     a = py.plot(data, filename='basic-line')
     
-    return a.resource
+    return a
 
 
 
