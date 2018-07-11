@@ -104,7 +104,7 @@ def plot_test(N=50):
     # image_bytes = requests.get('{}.jpg'.format(url)).content
 
     # return image_bytes
-    return url + '.jpg'
+    return url + '.jpeg'
 
 
 
@@ -149,13 +149,17 @@ async def on_message(message):
             # await client.send_message(message.channel, embed=embed)
             # await client.send_file(message.channel, content=plot_test())
 
-            embed = discord.Embed(colour=discord.Colour.blue())
+            
             # embed.set_image(url='img/nichijou-sakamoto-san.jpg')
 
             # embed = discord.Embed()
             # embed.set_image(url=plot_test())
             await client.send_message(message.channel, plot_test())
+            embed = discord.Embed(colour=discord.Colour.blue())
+            embed.set_image(url=plot_test())
+            await client.send_message(message.channel, embed=embed)
 
+            embed = discord.Embed(colour=discord.Colour.blue())
             embed.set_image(url='https://media.kitsu.io/anime/poster_images/5122/small.jpg')
             await client.send_message(message.channel, embed=embed)
 
