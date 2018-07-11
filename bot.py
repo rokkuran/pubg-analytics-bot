@@ -55,6 +55,11 @@ commands_img_response = {
     # "testplot", query.test_plot,
 }
 
+commands_embed_url_response = {
+    "tatamigalaxy": 'https://media.kitsu.io/anime/poster_images/5122/small.jpg',
+    "embedtest": plot_test()
+}
+
 
 def get_cmd(msg):
     return msg[1:].split()[0]
@@ -84,6 +89,10 @@ def process_cmd(msg):
     elif cmd in commands_img_response:
         # TODO: need to introduce callable function as well
         return "img", commands_img_response[cmd]
+    
+    elif cmd in commands_embed_url_response:
+        return "embed", commands_embed_url_response[cmd]
+
     else:
         return None, "Command not recognised."
 
@@ -101,10 +110,8 @@ def plot_test(N=50):
     data = [trace]
 
     url = py.plot(data, filename='basic-line')
-    # image_bytes = requests.get('{}.jpg'.format(url)).content
-
-    # return image_bytes
-    return url + '.jpeg'
+    url = url.replace('~', '%7E')  # discord embed fails with tilde in url: reported bug.
+    return '{}.jpeg'.format(url)
 
 
 
@@ -130,39 +137,23 @@ async def on_message(message):
                 await client.send_message(message.channel, response)
             elif cmd_type == "img":
                 await client.send_file(message.channel, response)
+            elif cmd_type == "embed":
+                embed = discord.Embed(colour=discord.Colour.blue())
+                embed.set_image(url=response)
+                await client.send_message(message.channel, embed=embed)
             else:
                 await client.send_message(message.channel, response)
 
-        if message.content == "~embedtest":
-            # embed = discord.Embed(title="Tile", description="Desc", color=0x00ff00)
-            # embed.add_field(name="Field1", value="hi", inline=False)
-            # embed.add_field(name="Field2", value="hi2", inline=False)
-            # plot_url = plot_test()
-            # await client.send_message(message.channel, plot_url)
+        # if message.content == "~embedtest":
+        #     await client.send_message(message.channel, plot_test())
+        #     url = plot_test().replace("~", "%7E")
+        #     embed = discord.Embed(colour=discord.Colour.blue())
+        #     embed.set_image(url=url)
+        #     await client.send_message(message.channel, embed=embed)
 
-            # embed = discord.Embed()
-            # plot_url = plot_test()
-            # await client.send_message(message.channel, plot_url + '.jpeg')
-            # plot_url = "https://plot.ly/~rokkuran/0"
-            # embed.add_field(name="url", value=plot_url)
-            # embed.set_image()
-            # await client.send_message(message.channel, embed=embed)
-            # await client.send_file(message.channel, content=plot_test())
-
-            
-            # embed.set_image(url='img/nichijou-sakamoto-san.jpg')
-
-            # embed = discord.Embed()
-            # embed.set_image(url=plot_test())
-            await client.send_message(message.channel, plot_test())
-            url = plot_test().replace("~", "%7E")
-            embed = discord.Embed(colour=discord.Colour.blue())
-            embed.set_image(url=url)
-            await client.send_message(message.channel, embed=embed)
-
-            embed = discord.Embed(colour=discord.Colour.blue())
-            embed.set_image(url='https://media.kitsu.io/anime/poster_images/5122/small.jpg')
-            await client.send_message(message.channel, embed=embed)
+        #     embed = discord.Embed(colour=discord.Colour.blue())
+        #     embed.set_image(url='https://media.kitsu.io/anime/poster_images/5122/small.jpg')
+        #     await client.send_message(message.channel, embed=embed)
 
     except Exception as e:
         await client.send_message(message.channel, e)
