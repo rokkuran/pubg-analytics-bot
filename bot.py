@@ -157,7 +157,7 @@ async def on_message(message):
             await client.send_message(message.channel, plot_test())
             url = plot_test().replace("~", "%7E")
             embed = discord.Embed(colour=discord.Colour.blue())
-            embed.set_image(url=url))
+            embed.set_image(url=url)
             await client.send_message(message.channel, embed=embed)
 
             embed = discord.Embed(colour=discord.Colour.blue())
