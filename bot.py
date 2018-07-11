@@ -8,6 +8,11 @@ from pubg_python import PUBG, Shard
 from common import Query
 
 
+import numpy as np
+import plotly.plotly as py
+import plotly.graph_objs as go
+
+
 
 client = discord.Client()
 RESPONSES = yaml.safe_load(open('responses.yaml', 'rb'))
@@ -74,6 +79,23 @@ def process_cmd(msg):
         return None, "Command not recognised."
 
 
+def plot_test(N=50):
+    random_x = np.linspace(0, 1, N)
+    random_y = np.random.randn(N)
+
+    # Create a trace
+    trace = go.Scatter(
+        x = random_x,
+        y = random_y
+    )
+
+    data = [trace]
+
+    py.iplot(data, filename='basic-line')
+
+    a = py.iplot(data, filename='basic-line')
+    
+    return a.resource
 
 
 
@@ -103,9 +125,11 @@ async def on_message(message):
                 await client.send_message(message.channel, response)
 
         if message.content == "~embedtest":
-            embed = discord.Embed(title="Tile", description="Desc", color=0x00ff00)
-            embed.add_field(name="Field1", value="hi", inline=False)
-            embed.add_field(name="Field2", value="hi2", inline=False)
+            # embed = discord.Embed(title="Tile", description="Desc", color=0x00ff00)
+            # embed.add_field(name="Field1", value="hi", inline=False)
+            # embed.add_field(name="Field2", value="hi2", inline=False)
+            embed = discord.Embed()
+            embed.set_image(url=plot_test())
             await client.send_message(message.channel, embed=embed)
 
     except Exception as e:
