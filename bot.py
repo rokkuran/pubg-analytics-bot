@@ -102,6 +102,12 @@ async def on_message(message):
             else:
                 await client.send_message(message.channel, response)
 
+        if message.content == "~embedtest":
+            embed = discord.Embed(title="Tile", description="Desc", color=0x00ff00)
+            embed.add_field(name="Field1", value="hi", inline=False)
+            embed.add_field(name="Field2", value="hi2", inline=False)
+            await client.send_message(message.channel, embed=embed)
+
     except Exception as e:
         await client.send_message(message.channel, e)
 
