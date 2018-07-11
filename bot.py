@@ -154,6 +154,8 @@ async def on_message(message):
 
             # embed = discord.Embed()
             # embed.set_image(url=plot_test())
+            await client.send_message(message.channel, plot_test())
+
             embed.set_image(url='https://media.kitsu.io/anime/poster_images/5122/small.jpg')
             await client.send_message(message.channel, embed=embed)
 
