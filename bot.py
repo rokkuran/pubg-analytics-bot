@@ -150,11 +150,11 @@ async def on_message(message):
             # await client.send_file(message.channel, content=plot_test())
 
             embed = discord.Embed(colour=discord.Colour.blue())
-            embed.set_image(url='img/nichijou-sakamoto-san.jpg')
+            # embed.set_image(url='img/nichijou-sakamoto-san.jpg')
 
             # embed = discord.Embed()
             # embed.set_image(url=plot_test())
-            # embed.set_image(url='https://en.wikipedia.org/wiki/Tree#/media/File:Ash_Tree_-_geograph.org.uk_-_590710.jpg')
+            embed.set_image(url='https://media.kitsu.io/anime/poster_images/5122/small.jpg')
             await client.send_message(message.channel, embed=embed)
 
     except Exception as e:
