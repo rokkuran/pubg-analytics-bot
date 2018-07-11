@@ -128,6 +128,9 @@ async def on_message(message):
             # embed = discord.Embed(title="Tile", description="Desc", color=0x00ff00)
             # embed.add_field(name="Field1", value="hi", inline=False)
             # embed.add_field(name="Field2", value="hi2", inline=False)
+            plot_url = plot_test()
+            await client.send_message(message.channel, plot_url)
+            
             embed = discord.Embed()
             plot_url = plot_test()
             embed.add_field(name="url", value=plot_url)
