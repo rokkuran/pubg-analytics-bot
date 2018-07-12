@@ -39,7 +39,7 @@ query = Query()
 
 commands_text_response = {
     "help": RESPONSES["help"],
-    "helpfs": RESPONSES["helpfs"],
+    # "helpfs": RESPONSES["helpfs"],
     "helpls": RESPONSES["helpls"],
     "test": test,
     "testargs": testargs,
