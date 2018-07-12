@@ -51,11 +51,7 @@ command_text_responses = {
     "playerattackevents": query.get_match_player_attack_events,
 }
 
-auto_text_response = {
-    "cat": "nyaa!",
-    "lol": "^.^ human say fuhny",
-}
-
+trigger_anywhere_text_responses = RESPONSES['trigger_anywhere_text_responses']
 
 
 command_img_responses = {
@@ -105,9 +101,6 @@ def process_cmd(msg):
     elif cmd in command_embed_responses:
         return "embed", command_embed_responses[cmd]
     
-    # elif cmd in trigger_text_multiple_responses:
-    #     return "text", select_random_response(trigger_text_multiple_responses[cmd])
-
     else:
         return None, "Command not recognised."
 
@@ -172,9 +165,9 @@ async def on_message(message):
             else:
                 await client.send_message(message.channel, response)
 
-        for k in auto_text_response:
+        for k in trigger_anywhere_text_responses:
             if k in message.content.lower():
-                await client.send_message(message.channel, auto_text_response[k])
+                await client.send_message(message.channel, trigger_anywhere_text_responses[k])
 
     except Exception as e:
         await client.send_message(message.channel, e)
