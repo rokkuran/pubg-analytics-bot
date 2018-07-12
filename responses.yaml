@@ -10,12 +10,10 @@ helpls: |
   triggers - exact
   ----------------
   ni hao; fren; erryti; you work?
-
-  triggers - within
+  \ntriggers - within
   -----------------
   cat; lol
-  
-  commands (prefix with !), e.g. !help
+  \ncommands (prefix with !), e.g. !help
   ------------------------------------
   sakamoto - sakamoto-san
   portrait - the image of your glorious robo-leader
