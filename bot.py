@@ -55,6 +55,8 @@ auto_text_response = {
     "lol": "^.^ human say fuhny",
 }
 
+multiple_responses = RESPONSES["multiple_responses"]
+
 commands_img_response = {
     "zonedist": "PLACEHOLDER",
     "sakamoto": "img/nichijou-sakamoto-san.jpg",
@@ -101,9 +103,17 @@ def process_cmd(msg):
     
     elif cmd in commands_embed_url_response:
         return "embed", commands_embed_url_response[cmd]
+    
+    elif cmd in multiple_responses:
+        return "text", select_random_response(multiple_responses[cmd])
 
     else:
         return None, "Command not recognised."
+
+
+def select_random_response(responses):
+    np.random.shuffle(responses)
+    return responses[0]
 
 
 def plot_test(N=50):

@@ -3,7 +3,16 @@ ni hao: ni hao, shon di!
 fren: no fren, i bot, bleep bloop
 erryti: headshot erryti!
 you work?: yeah bby, i here
-moo: got milk? i like milk.
+
+multiple_responses:
+  moo: 
+    - got milk? i like milk.
+    - i concur
+    - oh, sometime i cow too.
+    - this not farm. 
+    - ok...
+    - that not human sound.
+    - come on dude.
 
 # simple command text responses
 # help: "triggers:\n---------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n---------\n!sakamoto - sakamoto-san\n!ritalinlost - accurate portrayal"
