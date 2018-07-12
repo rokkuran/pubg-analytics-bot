@@ -43,8 +43,6 @@ command_text_responses = {
     "responses": RESPONSES,
     "help": cmd_based_text_responses["help"],
     "ritalinlost": cmd_based_text_responses['ritalinlost'],
-    "rosanna": cmd_based_text_responses['rosanna'],
-    "nyancat": cmd_based_text_responses['nyancat'],
     "test": test,
     "testargs": testargs,
     "playerid": query.get_player_id,
