@@ -7,22 +7,19 @@ you work?: yeah bby, i here
 # simple command text responses
 help: "triggers:\n---------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n---------\n!sakamoto - sakamoto-san\n!ritalinlost - accurate portrayal"
 helpls: | 
-  triggers - exact
+  triggers
   ----------------
   ni hao; fren; erryti; you work?
 
-  triggers - within
-  -----------------
-  cat; lol
-
   commands
   --------
-  !sakamoto - sakamoto-san
-  !portrait - the image of your glorious robo-leader
-  !ritalinlost - i learn correct response from many loss
-  !playerid username - player id
-  !lastmatchid username - last match id
-  !lastmatchinfo username - last match mode, map, duration
+  !sakamoto: sakamoto-san
+  !portrait: the image of your glorious robo-leader
+  !ritalinlost: i learn correct response from many loss
+  !playerid {username}: user player id
+  !lastmatchid {username}: user last match id
+  !lastmatchinfo {username}: user last match mode, map, duration
+
 ritalinlost: Chinee haka erryti! Dude def haka. So many no recoil aimwallbots aimed. No fault, chinee haka fault. Bad time.
 
 
