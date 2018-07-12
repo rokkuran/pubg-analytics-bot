@@ -64,15 +64,20 @@ class Query(API):
 	def _convert_timestamp(self, s):
 		# return datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ")
 		return datetime.strptime(s, "%Y-%m-%dT%H:%M:%S.%fZ")
+	
+	def _get_events(self, match_id, event_type):
+		telemetry = self._get_telemetry(match_id)
+		return telemetry.events_from_type(event_type)
 
 	def get_match_player_attack_events(self, match_id):
-		telemetry = self._get_telemetry(match_id)
-		events = telemetry.events_from_type('LogPlayerAttack')
+		# telemetry = self._get_telemetry(match_id)
+		# events = telemetry.events_from_type('LogPlayerAttack')
+		events = self._get_events(match_id, 'LogPlayerAttack')
+		
 		attack_points_header = ["timestamp", "attack_id", "attacker_name", "attack_type", "weapon_vehicle"]
-
 		attack_points = []
 
-		for i, attack in enumerate(events):
+		for attack in events:
 			
 			if attack.weapon.name != "Undefined":
 				attack_point = [

@@ -3,10 +3,11 @@ ni hao: ni hao, shon di!
 fren: no fren, i bot, bleep bloop
 erryti: headshot erryti!
 you work?: yeah bby, i here
+moo: got milk? i like milk.
 
 # simple command text responses
-help: "triggers:\n---------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n---------\n!sakamoto - sakamoto-san\n!ritalinlost - accurate portrayal"
-helpls: | 
+# help: "triggers:\n---------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n---------\n!sakamoto - sakamoto-san\n!ritalinlost - accurate portrayal"
+help: |
   triggers
   ----------------
   ni hao; fren; erryti; you work?
