@@ -49,9 +49,15 @@ commands_text_response = {
     "ritalinlost": RESPONSES['ritalinlost'],
 }
 
+auto_text_response = {
+    "cat": "nyaa!",
+    "lol": "^.^ human say fuhny",
+}
+
 commands_img_response = {
     "zonedist": "PLACEHOLDER",
     "sakamoto": "img/nichijou-sakamoto-san.jpg",
+    "portrait": "img/profile-pic_kitan-club-lemon.jpg",
     # "ritalinlost": "img/ritalin_lost.jpg",
     # "testplot", query.test_plot,
 }
@@ -140,23 +146,16 @@ async def on_message(message):
             elif cmd_type == "img":
                 await client.send_file(message.channel, response)
             elif cmd_type == "embed":
-                await client.send_message(message.channel, response)
+                # await client.send_message(message.channel, response)
                 embed = discord.Embed(colour=discord.Colour.blue())
                 embed.set_image(url=response)
                 await client.send_message(message.channel, embed=embed)
             else:
                 await client.send_message(message.channel, response)
 
-        if message.content == "~embedtest":
-        #     await client.send_message(message.channel, plot_test())
-            # url = plot_test().replace("~", "%7E")
-            embed = discord.Embed(colour=discord.Colour.blue())
-            embed.set_image(url=plot_test())
-            await client.send_message(message.channel, embed=embed)
-
-        #     embed = discord.Embed(colour=discord.Colour.blue())
-        #     embed.set_image(url='https://media.kitsu.io/anime/poster_images/5122/small.jpg')
-        #     await client.send_message(message.channel, embed=embed)
+        for k in auto_text_response:
+            if k in message.content.lower():
+                await client.send_message(message.channel, auto_text_response[k])
 
     except Exception as e:
         await client.send_message(message.channel, e)
