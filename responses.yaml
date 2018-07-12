@@ -15,14 +15,14 @@ helpls: |
   -----------------
   cat; lol
   
-  commands
-  --------
-  !sakamoto - sakamoto-san
-  !portrait - the image of your glorious robo-leader
-  !ritalinlost - i learn correct response from many loss
-  !playerid username - player id
-  !lastmatchid username - last match id
-  !lastmatchinfo username - last match mode, map, duration
+  commands (prefix with !), e.g. !help
+  ------------------------------------
+  sakamoto - sakamoto-san
+  portrait - the image of your glorious robo-leader
+  ritalinlost - i learn correct response from many loss
+  playerid username - player id
+  lastmatchid username - last match id
+  lastmatchinfo username - last match mode, map, duration
 
 ritalinlost: Chinee haka erryti! Dude was def haka. So many aimbots get aimed at him. Not his fault, chinee haka fault. Bad time.
 
