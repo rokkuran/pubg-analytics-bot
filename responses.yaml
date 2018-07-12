@@ -1,4 +1,4 @@
-# random text based responses
+# text based triggers/repsonses - exact
 ni hao: ni hao, shon di!
 fren: no fren, i bot, bleep bloop
 erryti: headshot erryti!
@@ -6,25 +6,26 @@ you work?: yeah bby, i here
 
 # simple command text responses
 help: "triggers:\n---------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n---------\n!sakamoto - sakamoto-san\n!ritalinlost - accurate portrayal"
-helpfs: >
-  this is the FOLDED style (>)
-  multi-line string in yaml
-  this is how it works... 
 helpls: |
-  this is the LITERAL style (|)
-  multi-line string in yaml
-  !exclamation mark test line
-  this: is the colon test line
-  this is how it works...
-ritalinlost: Chinee haka erryti! Dude was def haka. So many aimbots get aimed at him. Not his fault, chinee haka fault. Bad time.
-# help: |
-#   triggers
-#   --------
-#   ni hao
-#   fren
-#   erryti
-#   you work?
+  triggers - exact
+  ----------------
+  ni hao; fren; erryti; you work?
+
+  triggers - within
+  -----------------
+  cat; lol
   
-#   commands
-#   --------
-#   !sakamoto - sakamoto-san
+  commands
+  --------
+  !sakamoto - sakamoto-san
+  !portrait - the image of your glorious robo-leader
+  !ritalinlost - i learn correct response from many loss
+  !playerid username - player id
+  !lastmatchid username - last match id
+  !lastmatchinfo username - last match mode, map, duration
+
+ritalinlost: Chinee haka erryti! Dude was def haka. So many aimbots get aimed at him. Not his fault, chinee haka fault. Bad time.
+
+
+# text based triggers/responses - searched for within message
+# cat: 
