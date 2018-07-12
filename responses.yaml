@@ -8,7 +8,7 @@ trigger_text_single_responses:
   
 
 trigger_text_multiple_responses:
-  moo: 
+  moo: &moo_responses
     - got milk? i like milk.
     - yeah, we know you cow.
     - oh, sometime i cow too.
@@ -16,11 +16,18 @@ trigger_text_multiple_responses:
     - ok...
     - that not human sound.
     - come on dude.
+    - cows do poop.
+    - i know you not cow.
+    - i cannot be fooled human.
+  mooo: *moo_responses
+  moooo: *moo_responses
+  mooooo: *moo_responses
   meow:
     - no! i cat.
     - you not cat! silly human.
     - this why you always lose game.
     - why i have to say the same things over and over?
+    - YOU. NOT. CAT. .
 
 
 cmd_based_text_responses:
