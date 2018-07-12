@@ -41,6 +41,7 @@ commands_text_response = {
     "help": RESPONSES["help"],
     # "helpfs": RESPONSES["helpfs"],
     # "helpls": RESPONSES["helpls"],
+    "responses": RESPONSES,
     "test": test,
     "testargs": testargs,
     "playerid": query.get_player_id,

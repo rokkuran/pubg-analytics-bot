@@ -13,6 +13,10 @@ multiple_responses:
     - ok...
     - that not human sound.
     - come on dude.
+  meow:
+    - no! i cat.
+    - you not cat! silly human.
+    - this why you always lose game.
 
 # simple command text responses
 # help: "triggers:\n---------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n---------\n!sakamoto - sakamoto-san\n!ritalinlost - accurate portrayal"
