@@ -6,7 +6,7 @@ you work?: yeah bby, i here
 
 # simple command text responses
 help: "triggers:\n---------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n---------\n!sakamoto - sakamoto-san\n!ritalinlost - accurate portrayal"
-helpls: |
+helpls: | 
   triggers - exact
   ----------------
   ni hao; fren; erryti; you work?
@@ -21,7 +21,7 @@ helpls: |
   playerid username - player id
   lastmatchid username - last match id
   lastmatchinfo username - last match mode, map, duration
-ritalinlost: Chinee haka erryti! Dude was def haka. So many aimbots get aimed at him. Not his fault, chinee haka fault. Bad time.
+ritalinlost: Chinee haka erryti! Dude def haka. So many no recoil aimwallbots aimed. No fault, chinee haka fault. Bad time.
 
 
 # text based triggers/responses - searched for within message
