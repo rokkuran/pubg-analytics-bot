@@ -139,7 +139,7 @@ async def on_message(message):
             await client.send_message(message.channel, RESPONSES[message.content])
 
         if message.content.startswith("!"):
-            cmd_type, response = process_cmd(message.content)
+            cmd_type, response = process_cmd(message.content.lower())
 
             if cmd_type == "text":
                 await client.send_message(message.channel, response)
