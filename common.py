@@ -4,11 +4,15 @@
 
 import yaml
 import os
+
+from collections import Counter
+from datetime import datetime
 # import io
 # import urllib
 # import base64
 
 # import numpy as np
+import pandas as pd
 
 # import matplotlib.pyplot as plt
 
@@ -50,7 +54,52 @@ class Query(API):
 
 	def get_user_last_match(self, username):
 		return self.api.matches().get(self.get_last_match_id(username))
+
+	def _get_match(self, match_id):
+		return self.api.matches().get(match_id)
 	
+	def _get_telemetry(self, match_id):
+		return self.api.telemetry(self._get_match(match_id).assets[0].url)
+		
+	def _convert_timestamp(self, s):
+		# return datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ")
+		return datetime.strptime(s, "%Y-%m-%dT%H:%M:%S.%fZ")
+
+	def get_match_player_attack_events(self, match_id):
+		telemetry = self._get_telemetry(match_id)
+		events = telemetry.events_from_type('LogPlayerAttack')
+		attack_points_header = ["timestamp", "attack_id", "attacker_name", "attack_type", "weapon_vehicle"]
+
+		attack_points = []
+
+		for i, attack in enumerate(events):
+			
+			if attack.weapon.name != "Undefined":
+				attack_point = [
+					self._convert_timestamp(attack.timestamp),
+					attack.attack_id,
+					attack.attacker.name,
+					attack.attack_type,
+					attack.weapon.name
+				]
+
+				attack_points.append(attack_point)
+				
+			if attack.vehicle.name != "Undefined":
+
+				attack_point = [
+					self._convert_timestamp(attack.timestamp),
+					attack.attack_id,
+					attack.attacker.name,
+					attack.attack_type,
+					attack.vehicle.name
+				]
+				
+				attack_points.append(attack_point)
+				
+
+		return pd.DataFrame(attack_points, columns=attack_points_header)
+
 	
 
 	

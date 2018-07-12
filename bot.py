@@ -47,6 +47,7 @@ commands_text_response = {
     "lastmatchid": query.get_last_match_id,
     "lastmatchinfo": query.get_last_match_info,
     "ritalinlost": RESPONSES['ritalinlost'],
+    "playerattackevents": query.get_match_player_attack_events,
 }
 
 auto_text_response = {

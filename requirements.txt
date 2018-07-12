@@ -6,6 +6,7 @@ pubg-python==0.3.2
 plotly==3.0.0
 # urllib3==1.22
 numpy==1.14.2
+pandas==0.23.0
 # numpy==1.9.2
 # matplotlib==2.2.2
 # matplotlib==1.4.3
