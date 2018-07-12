@@ -5,6 +5,7 @@ trigger_text_single_responses:
   fren?: 'oh, you look for fren. hew hew mew. :sweat_smile:'
   erryti: headshot erryti!
   you work?: yeah bby, i here
+  (╯°□°）╯︵ ┻━┻: ^ oh, this guy memes.
   
 
 trigger_text_multiple_responses:
@@ -33,11 +34,11 @@ trigger_text_multiple_responses:
 cmd_based_text_responses:
   help: |
     triggers
-    ----------------
+    ---------
     (>'.')> keep them secret, keep them safe.
 
     commands
-    --------
+    -------------
     !sakamoto: sakamoto-san.
     !portrait: the image of your glorious robo-leader.
     !ritalinlost: i learn correct response from many loss.
@@ -47,8 +48,8 @@ cmd_based_text_responses:
     !responses: dictionary of triggers/responses.
 
   ritalinlost: Chinee haka erryti! Dude def haka. So many no recoil aimwallbots aimed. No fault, chinee haka fault. Bad time.
-  rosanna: https://www.youtube.com/watch?v=qmOLtTGvsbM
-  nyancat: https://www.youtube.com/watch?v=QH2-TGUlwu4
+  # rosanna: https://www.youtube.com/watch?v=qmOLtTGvsbM
+  # nyancat: https://www.youtube.com/watch?v=QH2-TGUlwu4
 
 
 trigger_anywhere_text_responses:
