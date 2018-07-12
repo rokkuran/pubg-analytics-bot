@@ -35,19 +35,19 @@ def testargs(*args):
 query = Query()
 
 
+trigger_text_single_responses = RESPONSES['trigger_text_single_responses']
+trigger_text_multiple_responses = RESPONSES["trigger_text_multiple_responses"]
+cmd_based_text_responses = RESPONSES["cmd_based_text_responses"]
 
-
-commands_text_response = {
-    "help": RESPONSES["help"],
-    # "helpfs": RESPONSES["helpfs"],
-    # "helpls": RESPONSES["helpls"],
+command_text_responses = {
     "responses": RESPONSES,
+    "help": cmd_based_text_responses["help"],
+    "ritalinlost": cmd_based_text_responses['ritalinlost'],
     "test": test,
     "testargs": testargs,
     "playerid": query.get_player_id,
     "lastmatchid": query.get_last_match_id,
     "lastmatchinfo": query.get_last_match_info,
-    "ritalinlost": RESPONSES['ritalinlost'],
     "playerattackevents": query.get_match_player_attack_events,
 }
 
@@ -56,9 +56,9 @@ auto_text_response = {
     "lol": "^.^ human say fuhny",
 }
 
-multiple_responses = RESPONSES["multiple_responses"]
 
-commands_img_response = {
+
+command_img_responses = {
     "zonedist": "PLACEHOLDER",
     "sakamoto": "img/nichijou-sakamoto-san.jpg",
     "portrait": "img/profile-pic_kitan-club-lemon.jpg",
@@ -66,7 +66,7 @@ commands_img_response = {
     # "testplot", query.test_plot,
 }
 
-commands_embed_url_response = {
+command_embed_responses = {
     "tatamigalaxy": 'https://media.kitsu.io/anime/poster_images/5122/small.jpg',
     # "embedtest": plot_test()
     "embedplottest": 'https://plot.ly/%7Erokkuran/0.jpeg',
@@ -86,9 +86,9 @@ def process_cmd(msg):
     cmd = get_cmd(msg)
     result = None
 
-    if cmd in commands_text_response:        
+    if cmd in command_text_responses:        
         args = get_cmd_args(msg)
-        f = commands_text_response[cmd]
+        f = command_text_responses[cmd]
         
         if callable(f):
             if len(args) > 0:
@@ -98,15 +98,15 @@ def process_cmd(msg):
         
         return "text", result
 
-    elif cmd in commands_img_response:
+    elif cmd in command_img_responses:
         # TODO: need to introduce callable function as well
-        return "img", commands_img_response[cmd]
+        return "img", command_img_responses[cmd]
     
-    elif cmd in commands_embed_url_response:
-        return "embed", commands_embed_url_response[cmd]
+    elif cmd in command_embed_responses:
+        return "embed", command_embed_responses[cmd]
     
-    elif cmd in multiple_responses:
-        return "text", select_random_response(multiple_responses[cmd])
+    # elif cmd in trigger_text_multiple_responses:
+    #     return "text", select_random_response(trigger_text_multiple_responses[cmd])
 
     else:
         return None, "Command not recognised."
@@ -147,10 +147,18 @@ async def on_ready():
 async def on_message(message):
 
     try:
-        if message.content in RESPONSES:
-            await client.send_message(message.channel, RESPONSES[message.content])
+        trigger_text_single_responses = RESPONSES['trigger_text_single_responses']
 
-        if message.content.startswith("!"):
+        if message.content in trigger_text_single_responses:
+            response = trigger_text_single_responses[message.content]
+            await client.send_message(message.channel, response)
+
+        elif message.content in trigger_text_multiple_responses:
+            response = select_random_response(trigger_text_multiple_responses[message.content])
+            await client.send_message(message.channel, response)
+            
+
+        elif message.content.startswith("!"):
             cmd_type, response = process_cmd(message.content)
 
             if cmd_type == "text":

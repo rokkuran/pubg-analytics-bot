@@ -1,10 +1,11 @@
 # text based triggers/repsonses - exact
-ni hao: ni hao, shon di!
-fren: no fren, i bot, bleep bloop
-erryti: headshot erryti!
-you work?: yeah bby, i here
+trigger_text_single_responses:
+  ni hao: ni hao, shon di!
+  fren: no fren, i bot, bleep bloop
+  erryti: headshot erryti!
+  you work?: yeah bby, i here
 
-multiple_responses:
+trigger_text_multiple_responses:
   moo: 
     - got milk? i like milk.
     - i concur
@@ -20,21 +21,22 @@ multiple_responses:
 
 # simple command text responses
 # help: "triggers:\n---------\nni hao\nfren\nerryti\nyou work?\n\ncommands:\n---------\n!sakamoto - sakamoto-san\n!ritalinlost - accurate portrayal"
-help: |
-  triggers
-  ----------------
-  ni hao; fren; erryti; you work?
+cmd_based_text_responses:
+  help: |
+    triggers
+    ----------------
+    ni hao; fren; erryti; you work?
 
-  commands
-  --------
-  !sakamoto: sakamoto-san
-  !portrait: the image of your glorious robo-leader
-  !ritalinlost: i learn correct response from many loss
-  !playerid {username}: user player id
-  !lastmatchid {username}: user last match id
-  !lastmatchinfo {username}: user last match mode, map, duration
+    commands
+    --------
+    !sakamoto: sakamoto-san
+    !portrait: the image of your glorious robo-leader
+    !ritalinlost: i learn correct response from many loss
+    !playerid {username}: user player id
+    !lastmatchid {username}: user last match id
+    !lastmatchinfo {username}: user last match mode, map, duration
 
-ritalinlost: Chinee haka erryti! Dude def haka. So many no recoil aimwallbots aimed. No fault, chinee haka fault. Bad time.
+  ritalinlost: Chinee haka erryti! Dude def haka. So many no recoil aimwallbots aimed. No fault, chinee haka fault. Bad time.
 
 
 # text based triggers/responses - searched for within message
