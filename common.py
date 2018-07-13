@@ -72,7 +72,7 @@ class Query(API):
 
 	def get_player_kill_events(self, match_id):
 		events = self._get_events(match_id, 'LogPlayerKill')
-		return events
+		return str(events)
 
 	def get_player_attack_events(self, match_id):
 		# telemetry = self._get_telemetry(match_id)
