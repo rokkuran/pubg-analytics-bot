@@ -70,15 +70,15 @@ class Query(API):
 		return telemetry.events_from_type(event_type)
 
 
-	# def get_player_kill_events(self, match_id):
-	# 	events = self._get_events(match_id, 'LogPlayerKill')
-	# 	return events
+	def get_player_kill_events(self, match_id):
+		events = self._get_events(match_id, 'LogPlayerKill')
+		return events
 
-	# def get_player_attack_events(self, match_id):
-	# 	# telemetry = self._get_telemetry(match_id)
-	# 	# events = telemetry.events_from_type('LogPlayerAttack')
-	# 	events = self._get_events(match_id, 'LogPlayerAttack')
-	# 	return events
+	def get_player_attack_events(self, match_id):
+		# telemetry = self._get_telemetry(match_id)
+		# events = telemetry.events_from_type('LogPlayerAttack')
+		events = self._get_events(match_id, 'LogPlayerAttack')
+		return events
 		
 		# attack_points_header = ["timestamp", "attack_id", "attacker_name", "attack_type", "weapon_vehicle"]
 		# attack_points = []

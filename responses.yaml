@@ -94,7 +94,6 @@ emoji_reactions:
     - ":gun:"
     - ":dagger:"
     - ":knife:"
-  kill: *kill
   omg:
     - ":open_mouth:"
   shit:
