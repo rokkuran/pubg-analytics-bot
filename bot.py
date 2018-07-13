@@ -168,9 +168,15 @@ async def on_message(message):
         for k in trigger_anywhere_text_responses:
             if k in message.content.lower():
                 await client.send_message(message.channel, trigger_anywhere_text_responses[k])
+        
+
+        await client.send_message(message.channel, "{} you talked".format(message.author.mention))
 
     except Exception as e:
         await client.send_message(message.channel, e)
+
+
+
 
 
 client.run(os.environ['DISCORD_BOT_TOKEN'])
