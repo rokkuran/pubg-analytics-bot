@@ -82,7 +82,7 @@ emoji_reactions:
     - ":clap:"
     - ":muscle:"
     - ":metal:"
-    - ":champagne:"
+    # - ":champagne:"   # not recognised.
   won: *win
   lost:
     - ":umbrella:"
