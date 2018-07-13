@@ -175,18 +175,12 @@ async def on_message(message):
         
 
         if 'wtf' in message.content:
-            reactions = [":anguished:", ":expressionless:", ":no_mouth:", ":grimacing:", ":kissing_heart:", ":open_mouth:", ":clap:", ":snowflake:"]
+            reactions = [":anguished_face:"]#, ":expressionless:", ":no_mouth:", ":grimacing:", ":kissing_heart:", ":open_mouth:", ":clap:", ":snowflake:"]
             reactions = [emoji.emojize('{}'.format(e), use_aliases=True) for e in reactions]
             reaction = emoji.unicode_codes.EMOJI_UNICODE[random.choice(reactions)]
             
-            await client.send_message(message.channel, "{} used".format(reaction))
-            await client.add_reaction(message, reaction)
-
-        # if message.content == 'emojis':
-        #     # emoji = get(client.get_all_emojis(), name='EmojiName')
-        #     emojis = client.get_all_emojis()
-        #     for emoji in emojis:
-        #         await client.add_reaction(message, emoji)          
+            await client.send_message(message.channel, "{}".format(reaction))
+            await client.add_reaction(message, reaction)         
 
 
     except Exception as e:
