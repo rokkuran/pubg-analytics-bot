@@ -42,6 +42,7 @@ query = Query()
 trigger_text_single_responses = RESPONSES['trigger_text_single_responses']
 trigger_text_multiple_responses = RESPONSES["trigger_text_multiple_responses"]
 cmd_based_text_responses = RESPONSES["cmd_based_text_responses"]
+emoji_reactions = RESPONSES["emoji_reactions"]
 
 command_text_responses = {
     "responses": RESPONSES,
@@ -175,15 +176,10 @@ async def on_message(message):
             if k in message.content.lower():
                 await client.send_message(message.channel, trigger_anywhere_text_responses[k])
         
-
-        if 'wtf' in message.content:
-            reactions = [":anguished_face:", ":expressionless:", ":no_mouth:", ":grimacing:", ":kissing_heart:", ":open_mouth:", ":clap:", ":snowflake:"]
-            # reactions = [emoji.emojize('{}'.format(e), use_aliases=True) for e in reactions]
-            # reaction = random.choice(reactions)
-
-            
-            # await client.send_message(message.channel, "{}".format(reaction))
-            await client.add_reaction(message, random_reaction(reactions))         
+        # add reactions to messages
+        for k, v in emoji_reactions.items():
+            if k in message.content:
+                await client.add_reaction(message, random_reaction(v))         
 
 
     except Exception as e:
