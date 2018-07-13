@@ -175,9 +175,16 @@ async def on_message(message):
         
 
         if 'wtf' in message.content:
-            reactions = [":anguished_face:"]#, ":expressionless:", ":no_mouth:", ":grimacing:", ":kissing_heart:", ":open_mouth:", ":clap:", ":snowflake:"]
+            reactions = [":anguished_face:", ":expressionless:", ":no_mouth:", ":grimacing:", ":kissing_heart:", ":open_mouth:", ":clap:", ":snowflake:"]
             reactions = [emoji.emojize('{}'.format(e), use_aliases=True) for e in reactions]
-            reaction = emoji.unicode_codes.EMOJI_UNICODE[random.choice(reactions)]
+
+            # reaction_long = random.choice(reactions)
+            # reacton = random.choice(reactions)
+            # reaction_de_emoji = emoji.demojize(e)
+            
+            # reaction = emoji.unicode_codes.EMOJI_UNICODE[random.choice(reactions)]
+
+            reaction = random.choice(reactions)
             
             await client.send_message(message.channel, "{}".format(reaction))
             await client.add_reaction(message, reaction)         
