@@ -53,8 +53,8 @@ command_text_responses = {
     "playerid": query.get_player_id,
     "lastmatchid": query.get_last_match_id,
     "lastmatchinfo": query.get_last_match_info,
-    "playerattackevents": query.get_player_attack_events,
-    "playerkillevents": query.get_player_kill_events,
+    # "playerattackevents": query.get_player_attack_events,
+    # "playerkillevents": query.get_player_kill_events,
 }
 
 trigger_anywhere_text_responses = RESPONSES['trigger_anywhere_text_responses']
