@@ -1,10 +1,10 @@
 # text based triggers/repsonses - exact
 trigger_text_single_responses:
   ni hao: ni hao, shon di!
-  fren?: &frenq 'oh, you look for fren. hew hew mew. :sweat_smile:'
-  frens?: *frenq
-  friend?: *frenq
-  friends?: *frenq
+  # fren?: &frenq 'oh, you look for fren. hew hew mew. :sweat_smile:'
+  # frens?: *frenq
+  # friend?: *frenq
+  # friends?: *frenq
   you work?: yeah bby, i here
   
 
