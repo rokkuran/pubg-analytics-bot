@@ -5,6 +5,8 @@ import asyncio
 import os
 import yaml
 import requests
+import emoji
+import random
 
 from pubg_python import PUBG, Shard
 
@@ -173,16 +175,16 @@ async def on_message(message):
         
 
         if 'wtf' in message.content:
-            await client.send_message(message.channel, "{} i know right.".format(message.author.mention))
+            emoji_reactions = [":anguished:", ":expressionless:", ":no_mouth:", ":grimacing:", ":kissing_heart:", ":open_mouth:", ":clap:", ":snowflake:"]
+            reaction = random.choice(emoji_reactions)
+            # await client.send_message(message.channel, "{} i know right.".format(message.author.mention))
+            await client.add_reaction(message, reaction)
 
-        if message.content == 'emojis':
-            # emoji = get(client.get_all_emojis(), name='EmojiName')
-            emojis = client.get_all_emojis()
-            for emoji in emojis:
-                await client.add_reaction(message, emoji)
-                # await client.send_message(message.channel, emoji)
-            # await client.add_reaction(message, emoji)
-            
+        # if message.content == 'emojis':
+        #     # emoji = get(client.get_all_emojis(), name='EmojiName')
+        #     emojis = client.get_all_emojis()
+        #     for emoji in emojis:
+        #         await client.add_reaction(message, emoji)          
 
 
     except Exception as e:
