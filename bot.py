@@ -143,40 +143,41 @@ async def on_ready():
 async def on_message(message):
 
     try:
-        trigger_text_single_responses = RESPONSES['trigger_text_single_responses']
+        if not message.author.bot:
+            trigger_text_single_responses = RESPONSES['trigger_text_single_responses']
 
-        if message.content in trigger_text_single_responses:
-            response = trigger_text_single_responses[message.content]
-            await client.send_message(message.channel, response)
+            if message.content in trigger_text_single_responses:
+                response = trigger_text_single_responses[message.content]
+                await client.send_message(message.channel, response)
 
-        elif message.content in trigger_text_multiple_responses:
-            response = random.choice(trigger_text_multiple_responses[message.content])
-            await client.send_message(message.channel, response)
+            elif message.content in trigger_text_multiple_responses:
+                response = random.choice(trigger_text_multiple_responses[message.content])
+                await client.send_message(message.channel, response)
+                
+
+            elif message.content.startswith("!"):
+                cmd_type, response = process_cmd(message.content)
+
+                if cmd_type == "text":
+                    await client.send_message(message.channel, response)
+                elif cmd_type == "img":
+                    await client.send_file(message.channel, response)
+                elif cmd_type == "embed":
+                    # await client.send_message(message.channel, response)
+                    embed = discord.Embed(colour=discord.Colour.blue())
+                    embed.set_image(url=response)
+                    await client.send_message(message.channel, embed=embed)
+                else:
+                    await client.send_message(message.channel, response)
+
+            for k in trigger_anywhere_text_responses:
+                if k in message.content.lower():
+                    await client.send_message(message.channel, trigger_anywhere_text_responses[k])
             
-
-        elif message.content.startswith("!"):
-            cmd_type, response = process_cmd(message.content)
-
-            if cmd_type == "text":
-                await client.send_message(message.channel, response)
-            elif cmd_type == "img":
-                await client.send_file(message.channel, response)
-            elif cmd_type == "embed":
-                # await client.send_message(message.channel, response)
-                embed = discord.Embed(colour=discord.Colour.blue())
-                embed.set_image(url=response)
-                await client.send_message(message.channel, embed=embed)
-            else:
-                await client.send_message(message.channel, response)
-
-        for k in trigger_anywhere_text_responses:
-            if k in message.content.lower():
-                await client.send_message(message.channel, trigger_anywhere_text_responses[k])
-        
-        # add reactions to messages
-        for k, v in emoji_reactions.items():
-            if k in message.content.lower():
-                await client.add_reaction(message, random_reaction(v))         
+            # add reactions to messages
+            for k, v in emoji_reactions.items():
+                if k in message.content.lower():
+                    await client.add_reaction(message, random_reaction(v))         
 
         # if message.content.
 
