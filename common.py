@@ -114,6 +114,22 @@ class Query(API):
 
 		return pd.DataFrame(attack_points, columns=attack_points_header)
 	
+	def plot_test(self, N):
+		random_x = np.linspace(0, 1, N)
+		random_y = np.random.randn(N)
+
+		# Create a trace
+		trace = go.Scatter(
+			x = random_x,
+			y = random_y
+		)
+
+		data = [trace]
+
+		url = py.plot(data, filename='basic-line')
+		url = url.replace('~', '%7E')  # discord embed fails with tilde in url: reported bug.
+		return '{}.jpeg'.format(url)
+
 	def plot_weapon_dmg(self, match_id):
 		df = self.get_player_attack_df(match_id)
 

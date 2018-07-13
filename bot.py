@@ -69,7 +69,7 @@ command_img_responses = {
 
 command_embed_responses = {
     "tatamigalaxy": 'https://media.kitsu.io/anime/poster_images/5122/small.jpg',
-    "embedtest": plot_test(),
+    "embedtest": query.plot_test,
     "embedplottest": 'https://plot.ly/%7Erokkuran/0.jpeg',
     "embedplottest2": 'https://plot.ly/%7Erokkuran/12.jpeg',
     "plotweapondmg": query.plot_weapon_dmg,
@@ -117,24 +117,6 @@ def process_cmd(msg):
 def random_reaction(emoji_long_names: list):
     reactions = [emoji.emojize('{}'.format(e), use_aliases=True) for e in emoji_long_names]
     return random.choice(reactions)
-
-
-
-def plot_test(N=50):
-    random_x = np.linspace(0, 1, N)
-    random_y = np.random.randn(N)
-
-    # Create a trace
-    trace = go.Scatter(
-        x = random_x,
-        y = random_y
-    )
-
-    data = [trace]
-
-    url = py.plot(data, filename='basic-line')
-    url = url.replace('~', '%7E')  # discord embed fails with tilde in url: reported bug.
-    return '{}.jpeg'.format(url)
 
 
 
