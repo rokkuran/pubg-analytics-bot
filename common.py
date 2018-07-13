@@ -153,16 +153,27 @@ class Query(API):
 		layout = go.Layout(
 			title='Match Damage Breakdown',
 			xaxis=dict(
-				title='Weapon/Vehicle',
+		#         title='Weapon/Vehicle',
 				titlefont=dict(
 					size=14,
 				),
+				showline=True,
+				mirror='ticks',
+				zerolinewidth=1,
+				linewidth=1,
+				linecolor='lightgrey',
+				tickangle=90,
 			),
 			yaxis=dict(
 				title='Damage',
 				titlefont=dict(
 					size=14,
 				),
+				showline=True,
+				mirror='ticks',
+				zerolinewidth=1,
+				linecolor='lightgrey',
+				linewidth=1,
 			),
 			autosize=False,
 			width=1000,
@@ -170,8 +181,8 @@ class Query(API):
 			margin=dict(
 				l=50,
 				r=50,
-				b=100,
-				t=30,
+				b=120,
+				t=50,
 				pad=0
 			),
 		)
