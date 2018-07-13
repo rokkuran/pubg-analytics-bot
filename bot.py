@@ -108,7 +108,14 @@ def process_cmd(msg):
         return "img", command_img_responses[cmd]
     
     elif cmd in command_embed_responses:
-        return "embed", command_embed_responses[cmd]
+        result = command_embed_responses[cmd]
+        
+        if callable(result):
+            args = get_cmd_args(msg)
+            if len(args) > 0:
+                result = f(*args)
+
+        return "embed", result
     
     else:
         return None, "Command not recognised."
