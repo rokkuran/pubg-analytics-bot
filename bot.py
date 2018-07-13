@@ -108,12 +108,14 @@ def process_cmd(msg):
         return "img", command_img_responses[cmd]
     
     elif cmd in command_embed_responses:
-        result = command_embed_responses[cmd]
+        args = get_cmd_args(msg)
+        f = command_embed_responses[cmd]
         
-        if callable(result):
-            args = get_cmd_args(msg)
+        if callable(f):
             if len(args) > 0:
                 result = f(*args)
+        else:
+            result = f
 
         return "embed", result
     
