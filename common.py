@@ -46,7 +46,7 @@ class Query(API):
 		return [x.id for x in self.get_player_matches(username)]
 	
 	def get_player_nth_match_id(self, username, n):
-		return self.get_player_match_ids[n]
+		return self.get_player_match_ids(username)[n]
 
 	def get_last_match_id(self, username):
 		players = self.get_players(username)
