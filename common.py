@@ -78,7 +78,7 @@ class Query(API):
 		# events = telemetry.events_from_type('LogPlayerAttack')
 		events = self._get_events(match_id, 'LogPlayerAttack')
 		# return events
-		return events[0].attacker_name, events[0].attack_type, events[0].weapon.name
+		return events[0].attacker.name, events[0].attack_type, events[0].weapon.name
 		
 		# attack_points_header = ["timestamp", "attack_id", "attacker_name", "attack_type", "weapon_vehicle"]
 		# attack_points = []
