@@ -151,6 +151,7 @@ async def on_message(message):
             elif cmd_type == "img":
                 await client.send_file(message.channel, response)
             elif cmd_type == "embed":
+                await client.send_message(message.channel, response)
                 embed = discord.Embed(colour=discord.Colour.blue())
                 embed.set_image(url=response)
                 await client.send_message(message.channel, embed=embed)
