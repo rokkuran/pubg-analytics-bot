@@ -73,9 +73,11 @@ emoji_reactions:
     - ":kissing_heart:"
     - ":open_mouth:"
     - ":clap:"
-  lol: 
+  lol: &lol
     - ":smiley:"
     - ":laughing:"
+  hah: *lol
+  heh: *lol
   win: &win
     - ":clap:"
     - ":muscle:"
@@ -85,7 +87,7 @@ emoji_reactions:
   lost:
     - ":umbrella:"
     - ":eggplant:"
-    - ":head_bandage:"
+    # - ":head_bandage:"  # not recognised.
   fren:
     - ":kissing_heart:"
   kill: &kill
@@ -98,3 +100,4 @@ emoji_reactions:
     - ":open_mouth:"
   shit:
     - ":poop:"
+
