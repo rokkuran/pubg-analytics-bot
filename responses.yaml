@@ -50,6 +50,7 @@ cmd_based_text_responses:
     !lastmatchid {username}: user last match id.
     !lastmatchinfo {username}: user last match mode, map, duration.
     !responses: dictionary of triggers/responses.
+    !pdmgn {username} {n}: plots breakdown of weapon damage across game for player's nth match in the past (0 is last match).
 
   ritalinlost: Chinee haka erryti! Dude def haka. So many no recoil aimwallbots aimed. No fault, chinee haka fault. Bad time.
   # rosanna: https://www.youtube.com/watch?v=qmOLtTGvsbM
@@ -100,6 +101,8 @@ emoji_reactions:
     - ":open_mouth:"
   shit:
     - ":poop:"
+  cool:
+    - ":sunglasses:"
   # test:
   #   - ":stuck_out_tongue_winking_eye:"
 
