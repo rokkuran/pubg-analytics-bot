@@ -76,14 +76,25 @@ emoji_reactions:
   lol: 
     - ":smiley:"
     - ":laughing:"
-  won:
+  win: &win
     - ":clap:"
     - ":muscle:"
     - ":metal:"
     - ":champagne:"
+  won: *win
   lost:
     - ":umbrella:"
     - ":eggplant:"
     - ":head_bandage:"
   fren:
     - ":kissing_heart:"
+  kill: &kill
+    - ":gun:"
+    - ":dagger:"
+    - ":knife:"
+    - ":metal:"
+  killed: *kill
+  omg:
+    - ":open_mouth:"
+  shit:
+    - ":poop:"

@@ -178,7 +178,7 @@ async def on_message(message):
         
         # add reactions to messages
         for k, v in emoji_reactions.items():
-            if k in message.content:
+            if k in message.content.lower():
                 await client.add_reaction(message, random_reaction(v))         
 
 
