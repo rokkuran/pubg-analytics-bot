@@ -179,7 +179,8 @@ async def on_message(message):
             # emoji = get(client.get_all_emojis(), name='EmojiName')
             emojis = client.get_all_emojis()
             for emoji in emojis:
-                await client.send_message(message.channel, emoji)
+                await client.add_reaction(message, emoji)
+                # await client.send_message(message.channel, emoji)
             # await client.add_reaction(message, emoji)
             
 
