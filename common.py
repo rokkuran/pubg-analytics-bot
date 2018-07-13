@@ -198,15 +198,20 @@ class Query(API):
 		)
 
 		fig = go.Figure(data=data, layout=layout)
-
 		url = py.plot(fig, filename='plot_weapon_dmg_{}'.format(match_id))
-		url = url.replace('~', '%7E')  # discord embed fails with tilde in url: reported bug.
-		return '{}.jpeg'.format(url)
+
+		return fix_plot_url(url)
 
 	def plot_all_weapon_dmg_for_user_match(self, username, n):
-
 		return self.plot_weapon_dmg(self.get_player_nth_match_id(username, n))
 
+
+def fix_plot_url(url):
+	"""
+	Discord embed fails with tilde (~) in url, hence replacement. 
+	This is a reported bug.
+	"""
+	return '{}.jpeg'.format(url.replace('~', '%7E'))
 
 
 if __name__ in "__main__":
