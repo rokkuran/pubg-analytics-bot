@@ -14,7 +14,10 @@ from datetime import datetime
 # import numpy as np
 import pandas as pd
 
-# import matplotlib.pyplot as plt
+import plotly
+plotly.tools.set_credentials_file(username='rokkuran', api_key=os.environ['PLOTLY_API_KEY'])
+import plotly.plotly as py
+import plotly.graph_objs as go
 
 from pubg_python import PUBG, Shard
 
@@ -72,44 +75,58 @@ class Query(API):
 	def get_player_kill_events(self, match_id):
 		events = self._get_events(match_id, 'LogPlayerKill')
 		return events
-
+	
 	def get_player_attack_events(self, match_id):
-		# telemetry = self._get_telemetry(match_id)
-		# events = telemetry.events_from_type('LogPlayerAttack')
-		events = self._get_events(match_id, 'LogPlayerAttack')
-		# return events
-		return events[0].attacker.name, events[0].attack_type, events[0].weapon.name
-		
-		# attack_points_header = ["timestamp", "attack_id", "attacker_name", "attack_type", "weapon_vehicle"]
-		# attack_points = []
+		return self._get_events(match_id, 'LogPlayerAttack')
 
-		# for attack in events:
+
+	def get_player_attack_df(self, match_id):
+		events = self.get_player_attack_events(match_id)
+
+		attack_points_header = ["timestamp", "attack_id", "attacker_name", "attack_type", "weapon_vehicle"]
+		attack_points = []
+
+		for attack in events:
 			
-		# 	if attack.weapon.name != "Undefined":
-		# 		attack_point = [
-		# 			self._convert_timestamp(attack.timestamp),
-		# 			attack.attack_id,
-		# 			attack.attacker.name,
-		# 			attack.attack_type,
-		# 			attack.weapon.name
-		# 		]
+			if attack.weapon.name != "Undefined":
+				attack_point = [
+					self._convert_timestamp(attack.timestamp),
+					attack.attack_id,
+					attack.attacker.name,
+					attack.attack_type,
+					attack.weapon.name
+				]
 
-		# 		attack_points.append(attack_point)
+				attack_points.append(attack_point)
 				
-		# 	if attack.vehicle.name != "Undefined":
+			if attack.vehicle.name != "Undefined":
 
-		# 		attack_point = [
-		# 			self._convert_timestamp(attack.timestamp),
-		# 			attack.attack_id,
-		# 			attack.attacker.name,
-		# 			attack.attack_type,
-		# 			attack.vehicle.name
-		# 		]
+				attack_point = [
+					self._convert_timestamp(attack.timestamp),
+					attack.attack_id,
+					attack.attacker.name,
+					attack.attack_type,
+					attack.vehicle.name
+				]
 				
-		# 		attack_points.append(attack_point)
+				attack_points.append(attack_point)
 				
 
-		# return pd.DataFrame(attack_points, columns=attack_points_header)
+		return pd.DataFrame(attack_points, columns=attack_points_header)
+	
+	def plot_weapon_dmg(self, match_id):
+		df = self.get_player_attack_events(match_id)
+
+		weapon_dmg_counts = Counter(df.weapon_vehicle)
+
+		data = [go.Bar(
+			x=list(weapon_dmg_counts.keys()),
+			y=[weapon_dmg_counts[k] for k in weapon_dmg_counts]
+		)]
+
+		url = py.plot(data, filename='basic-bar')
+		url = url.replace('~', '%7E')  # discord embed fails with tilde in url: reported bug.
+		return '{}.jpeg'.format(url)
 
 	
 
