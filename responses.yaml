@@ -72,7 +72,7 @@ emoji_reactions:
     - ":grimacing:"
     - ":kissing_heart:"
     - ":open_mouth:"
-    - ":clap:"
+    - ":stuck_out_tongue_winking_eye:"
   lol: &lol
     - ":smiley:"
     - ":laughing:"
@@ -81,13 +81,12 @@ emoji_reactions:
   win: &win
     - ":clap:"
     - ":muscle:"
-    # - ":metal:"   # not recognised.
-    # - ":champagne:"   # not recognised.
   won: *win
-  lost:
+  lose: *lose
     - ":umbrella:"
     - ":eggplant:"
-    # - ":head_bandage:"  # not recognised.
+    - ":stuck_out_tongue_winking_eye:"
+  lost: *lose
   fren: &frenr
     - ":kissing_heart:"
     - ":kissing:"
@@ -97,11 +96,16 @@ emoji_reactions:
     - ":gun:"
     - ":dagger:"
     - ":knife:"
-  killed: *kill
+  kill: *kill
   omg:
     - ":open_mouth:"
   shit:
     - ":poop:"
-  test:
-    - ":stuck_out_tongue_winking_eye:"
+  # test:
+  #   - ":stuck_out_tongue_winking_eye:"
 
+  
+# emojis not recognised
+# head_bandage
+# metal
+# champagne

@@ -69,7 +69,12 @@ class Query(API):
 		telemetry = self._get_telemetry(match_id)
 		return telemetry.events_from_type(event_type)
 
-	def get_match_player_attack_events(self, match_id):
+
+	def get_player_kill_events(self, match_id):
+		events = self._get_events(match_id, 'LogPlayerKill')
+		return events
+
+	def get_player_attack_events(self, match_id):
 		# telemetry = self._get_telemetry(match_id)
 		# events = telemetry.events_from_type('LogPlayerAttack')
 		events = self._get_events(match_id, 'LogPlayerAttack')
