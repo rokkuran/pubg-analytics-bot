@@ -1,9 +1,9 @@
 # text based triggers/repsonses - exact
 trigger_text_single_responses:
   ni hao: ni hao, shon di!
-  fren: &fren no fren, i bot, bleep bloop
-  friend: *fren
-  frend: *fren
+  # fren: &fren no fren, i bot, bleep bloop
+  # friend: *fren
+  # frend: *fren
   fren?: &frenq 'oh, you look for fren. hew hew mew. :sweat_smile:'
   frens?: *frenq
   friend?: *frenq
@@ -58,9 +58,9 @@ cmd_based_text_responses:
 
 trigger_anywhere_text_responses:
   cat: nyaa!
-  lol: ^.^ human say fuhny
-  # mb: 'sometimes i byte too. you know, cause robot :laughing:'
-  # gb: 'sometimes i byte too. you know, cause robot :laughing:'
+  # lol: ^.^ human say fuhny
+  # mb: &mb 'sometimes i byte too. you know, cause robot :laughing:'
+  # gb: *mb
   (╯°□°）╯︵ ┻━┻: ^ oh, this guy memes.
 
 
@@ -82,22 +82,26 @@ emoji_reactions:
     - ":clap:"
     - ":muscle:"
     # - ":metal:"   # not recognised.
-    - ":champagne:"   # not recognised.
+    # - ":champagne:"   # not recognised.
   won: *win
   lost:
     - ":umbrella:"
     - ":eggplant:"
     # - ":head_bandage:"  # not recognised.
-  fren:
+  fren: &frenr
     - ":kissing_heart:"
+    - ":kissing:"
+  friend: *frenr
+  frend: *frenr
   kill: &kill
     - ":gun:"
     - ":dagger:"
     - ":knife:"
-    - ":metal:"
   killed: *kill
   omg:
     - ":open_mouth:"
   shit:
     - ":poop:"
+  test:
+    - ":stuck_out_tongue_winking_eye:"
 

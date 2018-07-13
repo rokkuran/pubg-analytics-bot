@@ -117,6 +117,7 @@ def random_reaction(emoji_long_names: list):
     return random.choice(reactions)
 
 
+
 def plot_test(N=50):
     random_x = np.linspace(0, 1, N)
     random_y = np.random.randn(N)
@@ -180,7 +181,6 @@ async def on_message(message):
         for k, v in emoji_reactions.items():
             if k in message.content.lower():
                 await client.add_reaction(message, random_reaction(v))         
-
 
     except Exception as e:
         await client.send_message(message.channel, e)
