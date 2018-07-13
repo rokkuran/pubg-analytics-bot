@@ -136,10 +136,7 @@ class Query(API):
 		df = self.get_player_attack_df(match_id)
 
 		weapon_dmg_counts = Counter(df.weapon_vehicle)
-
-		N = len(weapon_dmg_counts)
 		y = [weapon_dmg_counts[k] for k in weapon_dmg_counts]
-		# matter = cmocean_to_plotly(cmocean.cm.matter, max(y))
 
 		data = [go.Bar(
 			x=list(weapon_dmg_counts.keys()),
@@ -153,24 +150,27 @@ class Query(API):
 			)
 		)]
 
-		url = py.plot(data, filename='plot_weapon_dmg_{}'.format(match_id))
+		layout = go.Layout(
+			title='Match Damage Breakdown',
+			xaxis=dict(
+				title='Damage',
+				titlefont=dict(
+					size=14,
+				)
+			),
+			yaxis=dict(
+				title='Weapon/Vehicle',
+				titlefont=dict(
+					size=14,
+				)
+			)
+		)
+
+		fig = go.Figure(data=data, layout=layout)
+
+		url = py.plot(fig, filename='plot_weapon_dmg_{}'.format(match_id))
 		url = url.replace('~', '%7E')  # discord embed fails with tilde in url: reported bug.
 		return '{}.jpeg'.format(url)
-
-	
-
-# def cmocean_to_plotly(cmap, pl_entries):
-# 	"""
-# 	https://plot.ly/python/cmocean-colorscales/
-# 	"""
-# 	h = 1.0 / (pl_entries - 1)
-# 	pl_colorscale = []
-	
-# 	for k in range(pl_entries):
-# 		C = list(map(np.uint8, np.array(cmap(k * h)[:3]) * 255))
-# 		pl_colorscale.append([k * h, 'rgb' + str((C[0], C[1], C[2]))])
-
-# 	return pl_colorscale
 
 
 
