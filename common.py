@@ -18,8 +18,10 @@ import plotly
 plotly.tools.set_credentials_file(username='rokkuran', api_key=os.environ['PLOTLY_API_KEY'])
 import plotly.plotly as py
 import plotly.graph_objs as go
+import cmocean
 
 from pubg_python import PUBG, Shard
+
 
 
 class API:
@@ -135,18 +137,41 @@ class Query(API):
 
 		weapon_dmg_counts = Counter(df.weapon_vehicle)
 
+		N = len(weapon_dmg_counts)
+		y = [weapon_dmg_counts[k] for k in weapon_dmg_counts]
+		matter = cmocean_to_plotly(cmocean.cm.matter, max(y))
+
 		data = [go.Bar(
 			x=list(weapon_dmg_counts.keys()),
-			y=[weapon_dmg_counts[k] for k in weapon_dmg_counts]
+			y=y,
+			marker=dict(
+				cmin=0,
+				cmax=max(y),
+				color=y,
+				colorscale=matter,
+			)
 		)]
 
-		url = py.plot(data, filename='basic-bar')
+		url = py.plot(data, filename='plot_weapon_dmg_{}'.format(match_id))
 		url = url.replace('~', '%7E')  # discord embed fails with tilde in url: reported bug.
 		return '{}.jpeg'.format(url)
 
 	
 
+def cmocean_to_plotly(cmap, pl_entries):
+	"""
+	https://plot.ly/python/cmocean-colorscales/
+	"""
+	h = 1.0 / (pl_entries - 1)
+	pl_colorscale = []
 	
+	for k in range(pl_entries):
+		C = list(map(np.uint8, np.array(cmap(k * h)[:3]) * 255))
+		pl_colorscale.append([k * h, 'rgb' + str((C[0], C[1], C[2]))])
+
+	return pl_colorscale
+
+
 
 if __name__ in "__main__":
 	pass
