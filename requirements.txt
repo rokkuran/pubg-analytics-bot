@@ -2,7 +2,7 @@ discord.py==0.16.12
 asyncio==3.4.3
 requests==2.18.4
 PyYAML==3.12
-pubg-python==0.3.2
+pubg-python==0.3.3
 plotly==3.0.0
 emoji==0.5.0
 # urllib3==1.22

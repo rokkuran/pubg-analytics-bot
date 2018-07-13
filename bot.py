@@ -64,7 +64,6 @@ command_img_responses = {
     "zonedist": "PLACEHOLDER",
     "sakamoto": "img/nichijou-sakamoto-san.jpg",
     "portrait": "img/profile-pic_kitan-club-lemon.jpg",
-    # "ritalinlost": "img/ritalin_lost.jpg",
     # "testplot", query.test_plot,
 }
 
