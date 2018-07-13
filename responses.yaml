@@ -82,7 +82,7 @@ emoji_reactions:
     - ":clap:"
     - ":muscle:"
   won: *win
-  lose: *lose
+  lose: &lose
     - ":umbrella:"
     - ":eggplant:"
     - ":stuck_out_tongue_winking_eye:"
