@@ -81,8 +81,8 @@ emoji_reactions:
   win: &win
     - ":clap:"
     - ":muscle:"
-    - ":metal:"
-    # - ":champagne:"   # not recognised.
+    # - ":metal:"   # not recognised.
+    - ":champagne:"   # not recognised.
   won: *win
   lost:
     - ":umbrella:"
