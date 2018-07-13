@@ -115,7 +115,7 @@ class Query(API):
 		return pd.DataFrame(attack_points, columns=attack_points_header)
 	
 	def plot_weapon_dmg(self, match_id):
-		df = self.get_player_attack_events(match_id)
+		df = self.get_player_attack_df(match_id)
 
 		weapon_dmg_counts = Counter(df.weapon_vehicle)
 
