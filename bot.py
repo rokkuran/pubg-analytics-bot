@@ -73,6 +73,7 @@ command_embed_responses = {
     "embedplottest": 'https://plot.ly/%7Erokkuran/0.jpeg',
     "embedplottest2": 'https://plot.ly/%7Erokkuran/12.jpeg',
     "plotweapondmg": query.plot_weapon_dmg,
+    "pdmgn": query.plot_all_weapon_dmg_for_user_match,
 }
 
 

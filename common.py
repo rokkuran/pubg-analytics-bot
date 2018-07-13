@@ -38,6 +38,16 @@ class Query(API):
 	def get_players(self, username):
 		return self.api.players().filter(player_names=[username])
 
+	def get_player_matches(self, username):
+		players = self.get_players(username)
+		return players[0].matches
+	
+	def get_player_match_ids(self, username):
+		return [x.id for x in self.get_player_matches(username)]
+	
+	def get_player_nth_match_id(self, username, n):
+		return self.get_player_match_ids[n]
+
 	def get_last_match_id(self, username):
 		players = self.get_players(username)
 		return players[0].matches[0].id
@@ -179,7 +189,7 @@ class Query(API):
 			width=1000,
 			height=600,
 			margin=dict(
-				l=50,
+				l=60,
 				r=50,
 				b=120,
 				t=50,
@@ -192,6 +202,9 @@ class Query(API):
 		url = py.plot(fig, filename='plot_weapon_dmg_{}'.format(match_id))
 		url = url.replace('~', '%7E')  # discord embed fails with tilde in url: reported bug.
 		return '{}.jpeg'.format(url)
+
+	def plot_all_weapon_dmg_for_user_match(self, username, n):
+		return self.plot_weapon_dmg(self.get_player_nth_match_id(username, n))
 
 
 
