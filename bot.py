@@ -76,8 +76,10 @@ command_embed_responses = {
 def get_cmd(msg):
     return msg[1:].split()[0]
 
+
 def get_cmd_args(msg):
     return msg[1:].split()[1:]
+
 
 def process_cmd(msg):
     """
@@ -109,9 +111,9 @@ def process_cmd(msg):
         return None, "Command not recognised."
 
 
-def select_random_response(responses):
-    np.random.shuffle(responses)
-    return responses[0]
+def random_reaction(emoji_long_names: list):
+    reactions = [emoji.emojize('{}'.format(e), use_aliases=True) for e in emoji_long_names]
+    return random.choice(reactions)
 
 
 def plot_test(N=50):
@@ -151,7 +153,7 @@ async def on_message(message):
             await client.send_message(message.channel, response)
 
         elif message.content in trigger_text_multiple_responses:
-            response = select_random_response(trigger_text_multiple_responses[message.content])
+            response = random.choice(trigger_text_multiple_responses[message.content])
             await client.send_message(message.channel, response)
             
 
@@ -176,18 +178,12 @@ async def on_message(message):
 
         if 'wtf' in message.content:
             reactions = [":anguished_face:", ":expressionless:", ":no_mouth:", ":grimacing:", ":kissing_heart:", ":open_mouth:", ":clap:", ":snowflake:"]
-            reactions = [emoji.emojize('{}'.format(e), use_aliases=True) for e in reactions]
+            # reactions = [emoji.emojize('{}'.format(e), use_aliases=True) for e in reactions]
+            # reaction = random.choice(reactions)
 
-            # reaction_long = random.choice(reactions)
-            # reacton = random.choice(reactions)
-            # reaction_de_emoji = emoji.demojize(e)
             
-            # reaction = emoji.unicode_codes.EMOJI_UNICODE[random.choice(reactions)]
-
-            reaction = random.choice(reactions)
-            
-            await client.send_message(message.channel, "{}".format(reaction))
-            await client.add_reaction(message, reaction)         
+            # await client.send_message(message.channel, "{}".format(reaction))
+            await client.add_reaction(message, random_reaction(reactions))         
 
 
     except Exception as e:
