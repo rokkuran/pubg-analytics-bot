@@ -1,4 +1,6 @@
 import discord
+from discord.utils import get
+
 import asyncio
 import os
 import yaml
@@ -170,7 +172,15 @@ async def on_message(message):
                 await client.send_message(message.channel, trigger_anywhere_text_responses[k])
         
 
-        await client.send_message(message.channel, "{} you talked".format(message.author.mention))
+        if 'wtf' in message.content:
+            await client.send_message(message.channel, "{} i know right.".format(message.author.mention))
+
+        if message.content == 'emojis':
+            # emoji = get(client.get_all_emojis(), name='EmojiName')
+            await client.send_message(message.channel, client.get_all_emojis())
+            # await client.add_reaction(message, emoji)
+            
+
 
     except Exception as e:
         await client.send_message(message.channel, e)

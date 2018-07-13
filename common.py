@@ -73,37 +73,38 @@ class Query(API):
 		# telemetry = self._get_telemetry(match_id)
 		# events = telemetry.events_from_type('LogPlayerAttack')
 		events = self._get_events(match_id, 'LogPlayerAttack')
+		return events
 		
-		attack_points_header = ["timestamp", "attack_id", "attacker_name", "attack_type", "weapon_vehicle"]
-		attack_points = []
+		# attack_points_header = ["timestamp", "attack_id", "attacker_name", "attack_type", "weapon_vehicle"]
+		# attack_points = []
 
-		for attack in events:
+		# for attack in events:
 			
-			if attack.weapon.name != "Undefined":
-				attack_point = [
-					self._convert_timestamp(attack.timestamp),
-					attack.attack_id,
-					attack.attacker.name,
-					attack.attack_type,
-					attack.weapon.name
-				]
+		# 	if attack.weapon.name != "Undefined":
+		# 		attack_point = [
+		# 			self._convert_timestamp(attack.timestamp),
+		# 			attack.attack_id,
+		# 			attack.attacker.name,
+		# 			attack.attack_type,
+		# 			attack.weapon.name
+		# 		]
 
-				attack_points.append(attack_point)
+		# 		attack_points.append(attack_point)
 				
-			if attack.vehicle.name != "Undefined":
+		# 	if attack.vehicle.name != "Undefined":
 
-				attack_point = [
-					self._convert_timestamp(attack.timestamp),
-					attack.attack_id,
-					attack.attacker.name,
-					attack.attack_type,
-					attack.vehicle.name
-				]
+		# 		attack_point = [
+		# 			self._convert_timestamp(attack.timestamp),
+		# 			attack.attack_id,
+		# 			attack.attacker.name,
+		# 			attack.attack_type,
+		# 			attack.vehicle.name
+		# 		]
 				
-				attack_points.append(attack_point)
+		# 		attack_points.append(attack_point)
 				
 
-		return pd.DataFrame(attack_points, columns=attack_points_header)
+		# return pd.DataFrame(attack_points, columns=attack_points_header)
 
 	
 
