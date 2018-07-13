@@ -46,7 +46,7 @@ class Query(API):
 		return [x.id for x in self.get_player_matches(username)]
 	
 	def get_player_nth_match_id(self, username, n):
-		return self.get_player_match_ids(username)[n]
+		return self.get_player_match_ids(username)[int(n)]
 
 	def get_last_match_id(self, username):
 		players = self.get_players(username)
@@ -204,6 +204,7 @@ class Query(API):
 		return '{}.jpeg'.format(url)
 
 	def plot_all_weapon_dmg_for_user_match(self, username, n):
+
 		return self.plot_weapon_dmg(self.get_player_nth_match_id(username, n))
 
 
