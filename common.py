@@ -153,17 +153,27 @@ class Query(API):
 		layout = go.Layout(
 			title='Match Damage Breakdown',
 			xaxis=dict(
-				title='Damage',
-				titlefont=dict(
-					size=14,
-				)
-			),
-			yaxis=dict(
 				title='Weapon/Vehicle',
 				titlefont=dict(
 					size=14,
-				)
-			)
+				),
+			),
+			yaxis=dict(
+				title='Damage',
+				titlefont=dict(
+					size=14,
+				),
+			),
+			autosize=False,
+			width=1000,
+			height=600,
+			margin=dict(
+				l=50,
+				r=50,
+				b=100,
+				t=30,
+				pad=0
+			),
 		)
 
 		fig = go.Figure(data=data, layout=layout)
