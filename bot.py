@@ -178,7 +178,7 @@ async def on_message(message):
             emoji_reactions = [":anguished:", ":expressionless:", ":no_mouth:", ":grimacing:", ":kissing_heart:", ":open_mouth:", ":clap:", ":snowflake:"]
             reaction = emoji.unicode_codes.EMOJI_UNICODE[random.choice(emoji_reactions)]
             
-            # await client.send_message(message.channel, "{} used".format(reaction))
+            await client.send_message(message.channel, "{} used".format(reaction))
             await client.add_reaction(message, reaction)
 
         # if message.content == 'emojis':
