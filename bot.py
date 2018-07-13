@@ -69,8 +69,9 @@ command_img_responses = {
 
 command_embed_responses = {
     "tatamigalaxy": 'https://media.kitsu.io/anime/poster_images/5122/small.jpg',
-    # "embedtest": plot_test()
+    "embedtest": plot_test(),
     "embedplottest": 'https://plot.ly/%7Erokkuran/0.jpeg',
+    "embedplottest2": 'https://plot.ly/%7Erokkuran/12.jpeg',
     "plotweapondmg": query.plot_weapon_dmg,
 }
 
@@ -182,6 +183,8 @@ async def on_message(message):
         for k, v in emoji_reactions.items():
             if k in message.content.lower():
                 await client.add_reaction(message, random_reaction(v))         
+
+        # if message.content.
 
     except Exception as e:
         await client.send_message(message.channel, e)
