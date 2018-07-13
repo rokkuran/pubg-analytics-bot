@@ -31,6 +31,8 @@ trigger_text_multiple_responses:
     - erryti! except for that 1 time.
     - yeah, 10% of the time, erryti!
     - but what about that 1 time?
+  # ritalin lost:
+
 
 
 cmd_based_text_responses:
@@ -90,7 +92,7 @@ emoji_reactions:
     - ":kissing:"
   friend: *frenr
   frend: *frenr
-  kill: &kill
+  kill:
     - ":gun:"
     - ":dagger:"
     - ":knife:"
