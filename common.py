@@ -11,7 +11,7 @@ from datetime import datetime
 # import urllib
 # import base64
 
-# import numpy as np
+import numpy as np
 import pandas as pd
 
 import plotly
