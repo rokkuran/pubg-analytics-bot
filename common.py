@@ -206,12 +206,56 @@ class Query(API):
 		return self.plot_weapon_dmg(self.get_player_nth_match_id(username, n))
 
 
+class Transform(Query):
+	""""""
+	def __init__(self):
+		Query.__init__(self)
+
+	def get_player_attack_df(self, match_id):
+		events = self.get_player_attack_events(match_id)
+
+		attack_points_header = ["timestamp", "attack_id", "attacker_name", "attack_type", "weapon_vehicle"]
+		attack_points = []
+
+		for attack in events:
+			
+			if attack.weapon.name != "Undefined":
+				attack_point = [
+					self._convert_timestamp(attack.timestamp),
+					attack.attack_id,
+					attack.attacker.name,
+					attack.attack_type,
+					attack.weapon.name
+				]
+
+				attack_points.append(attack_point)
+				
+			if attack.vehicle.name != "Undefined":
+
+				attack_point = [
+					self._convert_timestamp(attack.timestamp),
+					attack.attack_id,
+					attack.attacker.name,
+					attack.attack_type,
+					attack.vehicle.name
+				]
+				
+				attack_points.append(attack_point)
+				
+
+		return pd.DataFrame(attack_points, columns=attack_points_header)
+
+
+
+
+
 def fix_plot_url(url):
 	"""
 	Discord embed fails with tilde (~) in url, hence replacement. 
 	This is a reported bug.
 	"""
 	return '{}.jpeg'.format(url.replace('~', '%7E'))
+
 
 
 if __name__ in "__main__":
