@@ -85,24 +85,39 @@ def get_cmd_args(msg):
     return msg[1:].split()[1:]
 
 
+def get_cmd_response(msg, cmd, response_dict):
+    args = get_cmd_args(msg)
+    f = response_dict[cmd]
+    
+    result = f
+    if callable(f):
+        if len(args) > 0:
+            result = f(*args)    
+        else:
+            # if no arg cmd is not recognised it will return an exception later
+            pass
+    return result
+
+
 def process_cmd(msg):
     """
     Returns: cmd_type, result
     """
     cmd = get_cmd(msg)
-    result = None
+    # result = None
 
-    if cmd in command_text_responses:        
-        args = get_cmd_args(msg)
-        f = command_text_responses[cmd]
+    if cmd in command_text_responses:
+        return "text", get_cmd_response(msg, cmd, command_text_responses)
+        # args = get_cmd_args(msg)
+        # f = command_text_responses[cmd]
         
-        if callable(f):
-            if len(args) > 0:
-                result = f(*args)
-        else:
-            result = f
+        # if callable(f):
+        #     if len(args) > 0:
+        #         result = f(*args)
+        # else:
+        #     result = f
         
-        return "text", result
+        # return "text", result
 
     # TODO: refactor into function - same as above
     elif cmd in command_img_responses:
@@ -110,16 +125,17 @@ def process_cmd(msg):
         return "img", command_img_responses[cmd]
     
     elif cmd in command_embed_responses:
-        args = get_cmd_args(msg)
-        f = command_embed_responses[cmd]
+        return "embed", get_cmd_response(msg, cmd, command_embed_responses)
+        # args = get_cmd_args(msg)
+        # f = command_embed_responses[cmd]
         
-        if callable(f):
-            if len(args) > 0:
-                result = f(*args)
-        else:
-            result = f
+        # if callable(f):
+        #     if len(args) > 0:
+        #         result = f(*args)
+        # else:
+        #     result = f
 
-        return "embed", result
+        # return "embed", result
     
     else:
         return None, "Command not recognised."
