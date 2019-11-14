@@ -47,7 +47,6 @@ emoji_reactions = RESPONSES["emoji_reactions"]
 command_text_responses = {
     "responses": RESPONSES,
     "help": cmd_based_text_responses["help"],
-    "ritalinlost": cmd_based_text_responses['ritalinlost'],
     "test": test,
     "testargs": testargs,
     "playerid": query.get_player_id,
@@ -85,7 +84,7 @@ def get_cmd_args(msg):
     return msg[1:].split()[1:]
 
 
-def get_cmd_response(msg, cmd, response_dict):
+def cmd_response(msg, cmd, response_dict):
     args = get_cmd_args(msg)
     f = response_dict[cmd]
     
@@ -104,38 +103,15 @@ def process_cmd(msg):
     Returns: cmd_type, result
     """
     cmd = get_cmd(msg)
-    # result = None
 
     if cmd in command_text_responses:
-        return "text", get_cmd_response(msg, cmd, command_text_responses)
-        # args = get_cmd_args(msg)
-        # f = command_text_responses[cmd]
-        
-        # if callable(f):
-        #     if len(args) > 0:
-        #         result = f(*args)
-        # else:
-        #     result = f
-        
-        # return "text", result
+        return "text", cmd_response(msg, cmd, command_text_responses)
 
-    # TODO: refactor into function - same as above
     elif cmd in command_img_responses:
-        # TODO: need to introduce callable function as well
         return "img", command_img_responses[cmd]
     
     elif cmd in command_embed_responses:
-        return "embed", get_cmd_response(msg, cmd, command_embed_responses)
-        # args = get_cmd_args(msg)
-        # f = command_embed_responses[cmd]
-        
-        # if callable(f):
-        #     if len(args) > 0:
-        #         result = f(*args)
-        # else:
-        #     result = f
-
-        # return "embed", result
+        return "embed", cmd_response(msg, cmd, command_embed_responses)
     
     else:
         return None, "Command not recognised."
@@ -194,8 +170,6 @@ async def on_message(message):
             for k, v in emoji_reactions.items():
                 if k in message.content.lower():
                     await client.add_reaction(message, random_reaction(v))         
-
-        # if message.content.
 
     except Exception as e:
         await client.send_message(message.channel, e)

@@ -1,38 +1,16 @@
 # text based triggers/repsonses - exact
 trigger_text_single_responses:
-  ni hao: ni hao, shon di!
-  # fren?: &frenq 'oh, you look for fren. hew hew mew. :sweat_smile:'
-  # frens?: *frenq
-  # friend?: *frenq
-  # friends?: *frenq
   you work?: yeah bby, i here
   
 
 trigger_text_multiple_responses:
   moo: &moo_responses
-    - got milk? i like milk.
-    - yeah, we know you cow.
-    - oh, sometime i cow too.
-    - this not farm. 
+    - i like milk.
     - ok...
-    - that not human sound.
-    - come on dude.
-    - cows do poop.
     - i know you not cow.
-    - i cannot be fooled human.
   meow:
     - no! i cat.
-    - you not cat! silly human.
     - this why you always lose game.
-    - why i have to say the same things over and over?
-    - YOU. NOT. CAT. .
-  erryti: 
-    - headshot erryti!
-    - erryti! except for that 1 time.
-    - yeah, 10% of the time, erryti!
-    - but what about that 1 time?
-  # ritalin lost:
-
 
 
 cmd_based_text_responses:
@@ -45,23 +23,17 @@ cmd_based_text_responses:
     -------------
     !sakamoto: sakamoto-san.
     !portrait: the image of your glorious robo-leader.
-    !ritalinlost: i learn correct response from many loss.
     !playerid {username}: user player id.
     !lastmatchid {username}: user last match id.
     !lastmatchinfo {username}: user last match mode, map, duration.
     !responses: dictionary of triggers/responses.
     !pdmgn {username} {n}: plots breakdown of weapon damage across game for player's nth match in the past (0 is last match).
 
-  ritalinlost: Chinee haka erryti! Dude def haka. So many no recoil aimwallbots aimed. No fault, chinee haka fault. Bad time.
   # rosanna: https://www.youtube.com/watch?v=qmOLtTGvsbM
   # nyancat: https://www.youtube.com/watch?v=QH2-TGUlwu4
 
-
 trigger_anywhere_text_responses:
   cat: nyaa!
-  # lol: ^.^ human say fuhny
-  # mb: &mb 'sometimes i byte too. you know, cause robot :laughing:'
-  # gb: *mb
   (╯°□°）╯︵ ┻━┻: ^ oh, this guy memes.
 
 
@@ -103,8 +75,6 @@ emoji_reactions:
     - ":poop:"
   cool:
     - ":sunglasses:"
-  # test:
-  #   - ":stuck_out_tongue_winking_eye:"
 
 
 # emojis not recognised
