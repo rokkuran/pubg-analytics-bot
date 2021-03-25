@@ -1,7 +1,7 @@
 discord.py==0.16.12
 asyncio==3.4.3
 requests==2.20.0
-PyYAML==5.1
+PyYAML==5.4
 pubg-python==0.3.3
 plotly==3.0.0
 emoji==0.5.0
